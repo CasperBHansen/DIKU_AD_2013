@@ -1,0 +1,83 @@
+%========== Dynamic Programming ==========%
+
+\chapter{Dynamic Programming}
+\label{ch:dynamicprog}
+
+\textbf{Relevant Assignment} Week 3, Problem 15-2\\\\
+\textbf{Keywords} Rod-cutting, fibonacci, time-memory trade-off
+\vspace{1in}
+
+\noindent There are two key characteristics that a problem must have for
+dynamic programming to be a viable solution; optimal substructure and
+overlapping subproblems.
+\\\\
+\noindent \textbf{Optimal Substructure}\\
+% p. 379
+...
+\\\\
+\noindent \textbf{Overlapping Subproblems}\\
+% p. 384 - TODO: make this more concise
+When a recursive algorithm revisits the same problem repeatedly, we say that
+the optimization problem has \textit{overlapping subproblems}. That is, we
+solve the same subproblems, rather than generating new subproblems. In
+contrast to the divide and conquer technique, where we generate and solve new
+subproblems that are smaller instances of the same type of problem, in dynamic
+programming we solve each subproblem once, and then storing the solution in a
+table, where it can be looked up when needed in $\Theta(1)$ time.
+
+\newpage
+\section{Discovering Optimal Substructure}
+% p. 379-380
+\begin{enumerate}
+	\item Show that a solution to the problem consists of making a choice.
+Making this choice leaves one or more subproblems to be solved.
+	\item Suppose that for a given problem there exists a choice which leads
+to an optimal substructure. Do not concern yourself with how to determine this
+choice, but assume it has been given to you.
+	\item Given this choice, determine which subproblems ensue and how to best
+characterize the resulting space of subproblems.
+	\item Using a "cut-and-paste" technique, show that the solutions to the
+subproblems must themselves be optimal. You can do so by supposing that each
+subproblem is not optimal and then deriving a contradiction.
+
+The "cut-and-paste" refers to cutting out the nonoptimal solution for each of
+the subproblems, and pasting in the optimal one. Doing so shows that for the
+original problems solution to be optimal, so must its subproblems.
+
+Should an optimal solution give rise to more than one subproblem, they are
+typically so similar that you can modify the cut-and-paste argument for one to
+apply to the others with little effort.
+\end{enumerate}
+
+\newpage
+\section{Methods of Approach}
+There are usually two equivalent ways to implement a dynamic-programming
+approach; top-down with memoization and bottom-up.
+
+\subsection{Top-down with Memoization}
+% taken directly from the CLRS book, good summary I think.
+In this approach, we write the procedure recursively in a natural manner, but
+modified to save the result of each subproblem (usually in an array or hash
+table). The procedure now first checks to see whether it has previously solved
+this problem. If so, it returns the saved value, saving further computation at
+this level; if not, the procedure computes the value in the usual manner. We
+say that the recursive procedure has been \textit{memoized}; it "remembers"
+what results it has computed previously.
+
+\subsection{Bottom-up}
+% taken directly from the CLRS book, good summary I think.
+This approach typically depends on some natural notion of the "size" of a
+subproblem, such that solving any particular subproblem depends only on
+solving "smaller" subproblems.
+
+We sort the subproblems by size and solve them in size order, smallest first.
+When solving a particular subproblem, we have already solved all of the
+smaller subproblems its solution depends upon, and we saved their solutions.
+We solve each subproblem only once, and when we first see it, we have already
+solved all of its prerequisite subproblems.
+
+\newpage
+\section{Running Time Analysis}
+% p. 380-381
+...
+

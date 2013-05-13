@@ -1,0 +1,74 @@
+%	
+%	disposition.tex
+%	
+%	This document provides a summary of all of the exam question topics for
+%	the algorithms and datastructures course at the university of copenhagen
+%	department of computer science. It was written to serve as an excellent
+%	asset for the oral exam preparation, with most of the subtopics covered
+%	for any given exam topic in a concise and easily understandable format.
+%	
+
+\documentclass[11pt,english]{book}
+
+\usepackage{fancyhdr}						% page styling
+\usepackage{sectsty}						% section styling
+\usepackage{amsmath,amssymb}				% mathematical notation
+\usepackage[linesnumbered]{algorithm2e}		% algorithm pseudo-code
+
+%========== meta data ==========%
+
+\title
+{
+	\vspace{1in}
+	Algorithms \& Datastructures\\
+	\huge Disposition
+}
+
+\author
+{
+	Casper B. Hansen\\
+	\small Department of Computer Science\\
+	\small The University of Copenhagen\\
+	\texttt{fvx507@alumni.ku.dk}
+	\and
+	Hans J. T. Stephensen\\
+	\small Department of Computer Science\\
+	\small The University of Copenhagen\\
+	\texttt{xkv467@alumni.ku.dk}
+}
+
+\date{\today}
+
+
+%========== settings ==========%
+
+\setlength{\headheight}{15pt}
+\sectionfont{\Large}
+
+
+%========== macros ==========%
+
+\newcommand{\sethead}[3]{\lhead{#1}\chead{#2}\rhead{#3}}
+\newcommand{\setfeet}[3]{\lfoot{#1}\cfoot{#2}\rfoot{#3}}
+
+%========== document ==========%
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+%\tableofcontents
+
+\include{preamble}
+\include{divideandconquer}
+\include{priorityqueues}
+% \include{balancedbinarysearchtrees}
+\include{dynamicprogramming}
+% \include{greedyalgorithms}
+% \include{amortizedcomplexity}
+% \include{minimumspanningtrees}
+\include{definitions}
+\include{bibliography}
+
+\end{document}
+
