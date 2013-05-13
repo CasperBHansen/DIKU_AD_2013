@@ -1,0 +1,32 @@
+%========== Proving Algorithms ==========%
+
+\thispagestyle{fancyplain}
+
+\chapter{Proving Algorithms}
+\label{ch:proofs}
+...
+
+\section{Loop Invariant}
+\label{ch:proofs|sec:loop-invariant}
+A loop invariant is based on the notion of mathematical induction, as it
+provides a proof of the algorithms correctness in all three of its executed
+stages; initialization, maintenance and termination.
+
+The loop invariant is used to prove the correctness of a loop-based algorithm,
+and as such we must make sure that when we state a loop invariant the
+following is true.
+
+\subsection{Initialization}
+\label{ch:proofs|sec:loop-invariant|sub:initialization}
+The loop invariant is true prior to the first iteration of the loop.
+
+\subsection{Maintenance}
+\label{ch:proofs|sec:loop-invariant|sub:maintenance}
+If it is true before an iteration of the loop, it remains true before the next
+iteration.
+
+\subsection{Termination}
+\label{ch:proofs|sec:loop-invariant|sub:termination}
+When the loop terminates, the invariant provides a useful property that helps
+to show that the algorithm is correct.
+
