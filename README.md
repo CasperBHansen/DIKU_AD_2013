@@ -22,6 +22,33 @@ writing what you think should go into the document for the good of others.
 * Get a cloned copy of the repository
 * Start writing and commit your contributions, or use the issue-tracker to help.
 
+## Coding Guidelines
+As this document is specifically meant as a reference tool for the oral exam,
+we would like anything that gets added or revised to be very short, concise and
+to-the-point. Keep everything you write relevant to the subject in question and
+do not write exhaustively long paragraphs that doesn't help the student during
+the preparation time or under the exam itself.
+
+### Document Structure
+We have adopted a structure that we believe helps the student refresh the topic
+quickly and that ensures no time is spent looking up things in the book, but
+rather gives a precise description of what should be talked about during the
+topic discussion, what assignments are relevant for the assignment talk, and
+possible extra questions.
+
+Each chapter corresponds to an examination topic, and the first page clearly
+states the topic, keywords for the topic in question, and what assignments that
+are relevant to this topic. Besides these short informational points, the
+remainder of the first page gives a short description of the topic to be
+discussed, which serves as a quick reminder to the student. Subsequent pages
+within a chapter (or exam topic) are carefully thought out subtopics that
+should be covered during the examination. These sections should include a
+helping hand such that if the student gets stuck or has trouble remembering,
+the document will help the student get back up (ie. step-by-step proofs).
+
+The appendix gives the most important definitions and summaries relevant for
+most, if not all, of the topics.
+
 ## FAQ
 
 ### Why is it in English?
