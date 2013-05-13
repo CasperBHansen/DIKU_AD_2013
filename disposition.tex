@@ -10,6 +10,7 @@
 
 \documentclass[11pt,english]{book}
 
+\usepackage{appendix}
 \usepackage{fancyhdr}						% page styling
 \usepackage{sectsty}						% section styling
 \usepackage{amsmath,amssymb}				% mathematical notation
@@ -55,6 +56,7 @@
 
 \begin{document}
 
+\frontmatter
 \maketitle
 \thispagestyle{empty}
 \tableofcontents
@@ -72,10 +74,10 @@
 \include{shortestpathsalgorithms}
 
 \appendix
-\include{asymptoticnotation}
-\include{asymptoticanalysis}
-\include{proofs}
-\include{equations}
+\include{appendix/asymptoticnotation}
+\include{appendix/asymptoticanalysis}
+\include{appendix/proofs}
+\include{appendix/equations}
 
 \backmatter
 \include{bibliography}
