@@ -20,6 +20,7 @@ writing what you think should go into the document for the good of others.
 ### How to become a contributor
 * Write the repository owner and ask to be added as a contributor on the project
 * Get a cloned copy of the repository
+* Copy/paste one of the authors and replace it with your own information.
 * Start writing and commit your contributions, or use the issue-tracker to help.
 
 ## Coding Guidelines
