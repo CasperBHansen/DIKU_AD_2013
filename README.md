@@ -32,10 +32,10 @@ the preparation time or under the exam itself.
 
 ### Document Structure
 We have adopted a structure that we believe helps the student refresh the topic
-quickly and that ensures no time is spent looking up things in the book, but
-rather gives a precise description of what should be talked about during the
-topic discussion, what assignments are relevant for the assignment talk, and
-possible extra questions.
+quickly and that ensures no time is spent on time-consuming look-ups in the
+book, but rather gives a precise description of what should be talked about
+during the topic discussion, what assignments are relevant for the assignment
+talk, and possible extra questions.
 
 Each chapter corresponds to an examination topic, and the first page clearly
 states the topic, keywords for the topic in question, and what assignments that
