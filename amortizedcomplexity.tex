@@ -42,6 +42,17 @@ difference between these is that in aggregate analysis all operations have
 the same amortized cost, whereas in the accounting method we may assign
 different amortized cost for different operations.
 
+It follows naturally in aggregate analysis that the total amortized cost of
+$n$ operations provides an upper bound on the total actual cost of the
+sequence, but for the accounting method we must define this explicitly.
+\begin{align}
+	\sum_{i=1}^{n}{\hat{c_i}} \geq \sum_{i=1}^{n}{c_i}
+	\quad \text{, where }c_i\text{ is the actual cost, and }
+	\hat{c_i}\text{ is the amortized cost.}
+\end{align}
+This relationship, as described by the above equation, must hold for all
+sequences of operations.
+
 \subsection{Example}
 ...
 
