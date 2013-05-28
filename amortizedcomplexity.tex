@@ -46,12 +46,18 @@ It follows naturally in aggregate analysis that the total amortized cost of
 $n$ operations provides an upper bound on the total actual cost of the
 sequence, but for the accounting method we must define this explicitly.
 \begin{align}
+\label{ch:amortizedcomplexity|eqn:costrelationship}
 	\sum_{i=1}^{n}{\hat{c_i}} \geq \sum_{i=1}^{n}{c_i}
 	\quad \text{, where }c_i\text{ is the actual cost, and }
 	\hat{c_i}\text{ is the amortized cost.}
 \end{align}
 This relationship, as described by the above equation, must hold for all
-sequences of operations.
+sequences of operations. It follows from equation
+(\ref{ch:amortizedcomplexity|eqn:costrelationship}) that the difference
+between the total actual cost must never exceed that of the total amortized
+cost, which would result in negative credit and this does not provide an upper
+bound, and thus not a guarantee of the average performance of each operation
+in the worst case either.
 
 \subsection{Example}
 ...
