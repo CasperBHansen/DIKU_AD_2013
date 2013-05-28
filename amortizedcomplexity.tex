@@ -30,7 +30,17 @@ operations in the sequence.
 ...
 
 \section{Accounting Method}
-...
+In the accounting method of amortized complexity analysis, we \textit{assign}
+a cost to each operation - this amortized cost does not necessarily reflect
+the actual cost of an operation. When an operation's amortized cost exceeds
+its actual cost, we perceive this as deposited credit that we can use to pay
+for subsequent operations that might be undercharged, that is an operation
+whose amortized cost is less than its actual cost.
+
+Although this method is very similar to \textit{aggregate analysis}, the key
+difference between these is that in aggregate analysis all operations have
+the same amortized cost, whereas in the accounting method we may assign
+different amortized cost for different operations.
 
 \subsection{Example}
 ...
