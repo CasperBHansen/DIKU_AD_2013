@@ -4,8 +4,40 @@
 \label{ch:amortizedcomplexity}
 
 \textbf{Relevant Assignment} Week ?, Problem ?-?\\\\
-\textbf{Keywords} ...
+\textbf{Keywords} Aggregate analysis, accounting- and potential method, average.
 \vspace{1in}
 
-\noindent ...
+\noindent In amortized complexity analysis, we average the time required to
+perform a sequence of data-structure operations over all the operations
+performed. With amortized analysis, we can show that the average cost of an
+operation is small, if we average over a sequence of operations, even though
+a single operation within the sequence might be expensive.
+\\\\
+\noindent \textbf{Amortized- and Average-case Analysis} \\
+Amortized analysis differs from average-case analysis in that probability is
+not involved; an amortized analysis guarantees the \textit{average performance
+of each operation in the worst case}.
+
+\newpage
+\section{Aggregate Analysis}
+In aggregate analysis, we show that for all $n$, a sequence of $n$ operations
+takes \textit{worst-case} time $T(n)$ in total. The average cost, or \textbf{
+amortized cost}, however, per operation is $\frac{T(n)}{n}$. The amortized
+cost applies to each operation, even when there are several types of
+operations in the sequence.
+
+\subsection{Example}
+...
+
+\section{Accounting Method}
+...
+
+\subsection{Example}
+...
+
+\section{Potential Method}
+...
+
+\subsection{Example}
+...
 
