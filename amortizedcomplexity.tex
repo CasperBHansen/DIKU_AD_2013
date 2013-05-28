@@ -60,7 +60,46 @@ bound, and thus not a guarantee of the average performance of each operation
 in the worst case either.
 
 \subsection{Example}
-...
+Consider an array $A$ of length $n$. Appending an element onto the array
+requires linear time $O(n)$ as we must reallocate a new array $B$ of length
+$n+1$ and copy all $n$ the elements of $A$ into $B$ and put the new element
+at the end of $B$. This isn't very efficient, at all. We can do a lot better.
+\\\\
+Let's assume that the array $A$ is of length $n$ and that it initially holds
+\texttt{nil} in all $n$ slots, and for convenience we maintain a pointer $p$
+to the last non-\texttt{nil} element of the array. Then we adding an element
+to the array $A$ is constant for $p < n$, as it is simply a matter of putting
+the element into the $p$th slot of $A$ and incrementing the pointer - and
+these are both constant time operations. Now, for $p = n$ we must then
+reallocate the array, as is the case for the previous explanation, but when
+we do, we allocate $B$ with twice the length of $A$. This operation takes
+$O(n)$ as before, but notice that this will occur less frequently as $n$ grows
+larger.
+\\\\
+\noindent \textbf{Analysis}
+Over a sequence of $n$ append operations we spend $n - 1$ constant time
+operations where we simply put the element in the right slot and increment
+the pointer. We then spend $O(n)$ time copying the contents of $A$ over into
+$B$.
+\\\\
+\noindent We assign the following amortized costs for the operation.
+\begin{align}
+	\texttt{Append}
+	\begin{cases}
+		3 &\mbox{for } p < n \\
+		0 &\mbox{for } p = n
+	\end{cases}
+\end{align}
+The majority of the work is done when $p = n$, but we want to even out this
+work throughout the entire sequence of operations, hence we make the case
+where $p < n$ pay for 1 itself, and 1 for both the copying procedure and for
+refilling the deposited credit after the copy phase, which amounts to a grand
+total of 3 for each operation where $p < n$.
+
+% possibly add figures showing this ?
+
+As such, the amortized cost spent on each operation is constant, which gives
+us the upper bound on the algorithm of $\Theta(1)$.
 
 \section{Potential Method}
 ...
