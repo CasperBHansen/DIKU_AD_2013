@@ -147,6 +147,20 @@ which is somewhat parallel to the accounting method, except we are expressing
 the amortized cost $\hat{c_i}$ by means of the potential difference, rather
 than an arbitrary guess.
 
+Substituting these findings into the equation that defines the upper bound of
+the amortization on the actual cost, we prove its correctness.
+\begin{align}
+	\sum_{i=1}^{n}{\hat{c_i}}
+	&= \sum_{i=1}^{n}{(c_i + \Phi(D_i) - \Phi(D_{i-1}))} \\
+	&= \sum_{i=1}^{n}{c_i + \Phi(D_n) - \Phi(D_{0})} \\
+	&= \sum_{i=1}^{n}{c_i + \Phi(D_n)} \\
+	&\geq \sum_{i=1}^{n}{c_i}
+\end{align}
+Notice that we make use of the rule of telescoping sums (see appendix
+\ref{appendix:equations|eqn:telescoping}). We note that $\Phi(D_0) = 0$,
+and that $\Phi(D_n) \geq 0$, proving that the amortized cost, as computed in
+the potential method, provides an upper bound on the actual cost.
+
 \subsection{Example}
 ...
 

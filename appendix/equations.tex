@@ -7,6 +7,17 @@
 % expressions when solving recurrences.
 ...
 
+\section{Telescoping Sums}
+\label{appendix:equations|eqn:telescoping}
+A sum in which subsequent terms cancel each other, leaving only the first and
+the last.
+\begin{align}
+	S &= \sum_{i=1}^{n-1}(a_{i} - a_{i+1}) \\
+	&= (a_1-a_2)+(a_2-a_3) + \dots + (a_{n-2}-a{n-1}) + (a_{n-1}-a_n)
+	\nonumber \\
+	&= (a_1 - a_n) \nonumber
+\end{align}
+
 % \section{Summary}
 % \label{ch:definitions|sec:asymptotic-notation|sec:summary}
 % TODO: list the definitions in a table
