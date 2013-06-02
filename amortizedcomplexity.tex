@@ -112,6 +112,13 @@ datastructure as we analyze the potential it holds mapped onto it as it
 changes from one iteration to the next, as opposed to the accounting method,
 where we make an guess about the amortized cost and argue its correctness
 after the fact.
+\\\\
+We define the potential function $\Phi(D_i) \rightarrow \mathbb{R}$ as a
+mapping of the potential of the datastructure $D$ at a particular iteration
+$i$ onto the real numbers. We must maintain the invariant that the initial
+potential of any datastructure is zero, that is $\Phi(D_0) = 0$, and that
+subsequent iterations on the datastructure is always non-negative, that is
+$\Phi(D_i) \geq 0$.
 
 \begin{align}
 	\hat{c_i} = c_i + \Phi(D_i) - \Phi(D_{i-1})
