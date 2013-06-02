@@ -120,9 +120,32 @@ potential of any datastructure is zero, that is $\Phi(D_0) = 0$, and that
 subsequent iterations on the datastructure is always non-negative, that is
 $\Phi(D_i) \geq 0$.
 
+As we can now describe the potential at any given iteration, we can express
+the potential difference between two such iterations as $\Delta\Phi_i =
+\Phi(D_i) - \Phi(D_{i-1})$. This gives us a tool to analyze how the
+potential changes.
+
+We define the amortized cost $\hat{c_i}$ such that it provides an upper bound
+on the actual cost $c_i$ by means of the potential difference,
 \begin{align}
 	\hat{c_i} = c_i + \Phi(D_i) - \Phi(D_{i-1})
 \end{align}
+which gives us an invariant that we must maintain. That is, whenever the
+actual cost $c_i$ exceeds that of the amortized cost $\hat{c_i}$, the
+potential difference must be able to make up for this. To define this more
+clearly, we state the cases that
+\begin{align}
+	\Delta\Phi_i
+	\begin{cases}
+		\Phi(D_i) - \Phi(D_{i-1}) > 0 &
+		\text{Excess potential, stored for later.} \\
+		\Phi(D_i) - \Phi(D_{i-1}) < 0 &
+		\text{Insufficient potential, use stored energy.}
+	\end{cases}	
+\end{align}
+which is somewhat parallel to the accounting method, except we are expressing
+the amortized cost $\hat{c_i}$ by means of the potential difference, rather
+than an arbitrary guess.
 
 \subsection{Example}
 ...
