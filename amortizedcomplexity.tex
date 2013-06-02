@@ -57,7 +57,8 @@ sequences of operations. It follows from equation
 between the total actual cost must never exceed that of the total amortized
 cost, which would result in negative credit and this does not provide an upper
 bound, and thus not a guarantee of the average performance of each operation
-in the worst case either.
+in the worst case either. In other words, we can always pay in advance, but
+we cannot borrow.
 
 \subsection{Example}
 Consider an array $A$ of length $n$. Appending an element onto the array
@@ -102,7 +103,19 @@ As such, the amortized cost spent on each operation is constant, which gives
 us the upper bound on the algorithm of $\Theta(1)$.
 
 \section{Potential Method}
-...
+Using the potential method is a lot more rigorous than the two previously
+mentioned methodologies, as it is firmly rooted in mathematics all the way
+throughout the proof. The potential method is based on the same notion as the
+accounting method, the difference being the way how we perceive the problem of
+amortization. In the potential method we derive the amortized cost from the
+datastructure as we analyze the potential it holds mapped onto it as it
+changes from one iteration to the next, as opposed to the accounting method,
+where we make an guess about the amortized cost and argue its correctness
+after the fact.
+
+\begin{align}
+	\hat{c_i} = c_i + \Phi(D_i) - \Phi(D_{i-1})
+\end{align}
 
 \subsection{Example}
 ...
