@@ -10,22 +10,72 @@ notation.
 
 \section{$O$}
 \label{ch:asymptoticnotation|sec:big-o}
-Defines a tight upperbounded growth of a function. That is, $O(n)$ is
-analogous to the comparison $\leq$.
+Defines a tight upperbound of a function. That is, $O(n)$ is analogous to the
+comparative operator $\leq$. If $O(f(n)) = g(n)$ we say that $f(n)$ is tightly
+bounded above by $g(n)$.
+\begin{align}
+	O(f(n)) =
+	\{g(n) \text{ iff } \exists c, n_0 \in \mathbb{R}^{+} :
+	0 \geq g(n) \geq c f(n), \forall n \geq n_0 \}
+\end{align}
 
 \section{$o$}
 \label{ch:asymptoticnotation|sec:little-o}
-...
+Defines an upper bound of a function. That is, $o(n)$ is analogous to the
+comparative operator $<$. If $o(f(n)) = g(n)$ we say that $f(n)$ is bounded
+above by $g(n)$ - this bound is \textit{not} tight.
+\begin{align}
+	o(f(n)) =
+	\{g(n) \text{ iff } \forall c > 0 \exists n_0 > 0 :
+	0 \leq c f(n) < c g(n), \forall n \geq n_0 \}
+\end{align}
 
 \section{$\Omega$}
 \label{ch:asymptoticnotation|sec:big-omega}
-...
+Defines a tight lowerbound of a function. That is, $\Omega$ is analogous to
+the comparative operator $\geq$. If $\Omega(f(n)) = g(n)$ we say that $f(n)$
+is tightly bounded below by $g(n)$.
+\begin{align}
+	\Omega(f(n)) =
+	&\{g(n) \text{ iff } \exists c, n_0 \in \mathbb{R}^{+} :
+	0 \geq c f(n) \geq g(n), \forall n \geq n_0 \}
+\end{align}
 
 \section{$\omega$}
 \label{ch:asymptoticnotation|sec:litte-omega}
-...
+Defines a lower bound of a function. That is, $o(n)$ is analogous to the
+comparative operator $>$. If $o(f(n)) = g(n)$ we say that $f(n)$ is bounded
+below by $g(n)$ - this bound is \textit{not} tight.
+\begin{align}
+	\omega(f(n)) =
+	\{g(n) \text{ iff } \forall c > 0 \exists n_0 > 0 :
+	0 \leq c g(n) < f(n), \forall n \geq n_0 \}
+\end{align}
 
 \section{$\Theta$}
 \label{ch:asymptoticnotation|sec:theta}
-...
+Defines a tight bound of a function. That is, it is bounded above and below by
+a certain growth.
+\begin{align}
+	\Theta(f(n)) =
+	&\{g(n) \text{ iff } \exists c_1, c_2, n_0 \in \mathbb{R}^{+} :\\
+	&0 \leq c_1 f(n) \leq g(n) \leq c_2 f(n), \forall n \geq n_0 \}
+	\nonumber
+\end{align}
+
+\section{Summary}
+\label{ch:asymptoticnotation|sec:summary}
+In summary, we gather all of the above cases into one equation.
+\begin{align}
+	f(n) =
+	\begin{cases}
+		\exists c, n_0 \in \mathbb{R}^{+}
+		: 0 \geq g(n) \geq c f(n), \forall n \geq n_0 & O(g(n)) \\
+		\exists c, n_0 \in \mathbb{R}^{+}
+		: 0 \geq c f(n) \geq g(n), \forall n \geq n_0 & \Omega(g(n)) \\
+		\Omega(f(n)) = O(f(n)) & \Theta(f(n))
+	\end{cases}
+\end{align}
+
+% make a comparison table
 
