@@ -4,8 +4,8 @@
 \label{ch:divideandconquer}
 
 \textbf{Relevant Assignment} Problem ?-?\\\\
-\textbf{Algorithms} Merge sort, quicksort\\\\
-\textbf{Keywords} The master method, recursion trees (validation by induction)
+\textbf{Algorithms} Merge sort, quicksort, fibonacci\\\\
+\textbf{Keywords} Recurrences, master method
 \vspace{1in}
 
 \noindent Divide and conquer is paradigm of algorithmic methodologies. It
@@ -26,22 +26,60 @@ straightforward manner.
 for the original problem.
 \\\\
 
-\section{Recursion Trees}
+\section{Solving Recurrences}
+% p. 83-97, CLRS 
+Divide and conquer algorithms give rise to recurrence naturally, because they
+call themselves recursively. To analyze the complexity of any recursive
+algorithm we must describe it mathematically as an equation or inequality.
+\\\\
+We do this using one of three methods.
+\begin{description}
+	\item \textbf{Recursion trees} describes the recursions by means of a
+tree-structure, by which we can then either guess or argue the complexity.
+	\item \textbf{Substitution} uses a guessed bound, which could have been
+derived from a recursion tree, and then by mathematical induction proves this
+bound.
+	\item \textbf{Master method} provides formulae for recurrences of the form
+$T(n) = a T(n/b) + f(n)$, where $a \geq 1$, $b > 1$ and $f(n)$ is a given
+function.
+\end{description}
+
+\subsection{Recursion Trees}
+% p. 88-92, CLRS
 A recursion tree is a pictorial representation of an algorithms recursive
 calls. That is, we simply draw the recursions as they occur in a
-tree-structure, such that we may [...]
+tree-structure, such that we may make a guess as to the complexity of an
+algorithm.
+
+\begin{figure}[h]
+	% TODO: make figure
+	\caption{Recurrence tree of merge sort.}
+\end{figure}
 
 Although recursion trees are useful for getting an idea about the complexity
 of a recursive algorithm, it doesn't directly give us any concrete about this.
 For that must employ more strict methods that are rooted in mathematics, and
-not drawings.
+not drawings - we can do this by induction with the substitution method (see
+section \ref{ch:divideandconquer|sub:recurrences|subsub:substitution}).
 
-\section{Solving Recurrences}
+\subsection{Substitution}
+\label{ch:divideandconquer|sub:recurrences|subsub:substitution}
+% p. 83-87, CLRS
 ...
 
-\section{Substitution}
+\subsection{The Master Method}
+% p. 88-97, CLRS
 ...
-
-\section{The Master Method}
-...
+\begin{align}
+	T(n) &= a T(\frac{n}{b}) + f(n)
+	\begin{cases}
+		f(n) = O(n^{\lg_b a - \epsilon}) & T(n) = \Theta(n^{\lg_b a}) \\
+		f(n) = \Theta(n^{\lg_b a}) & T(n) = \Theta(n^{\lg_b a} \lg n) \\
+		f(n) = O(n^{\lg_b a + \epsilon}) & * \Rightarrow T(n) = \Theta(f(n))
+	\end{cases}
+\end{align}
+\begin{align}
+	a f(\frac{n}{b}) &\leq c f(n) \text{, for all sufficiently large } n
+	\text{, where } c < 1 \tag{*}
+\end{align}
 
