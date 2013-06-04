@@ -71,7 +71,7 @@ section \ref{ch:divideandconquer|sub:recurrences|subsub:substitution}).
 % p. 88-97, CLRS
 ...
 \begin{align}
-	T(n) &= a T(\frac{n}{b}) + f(n)
+	T(n) &= a T\left(\frac{n}{b}\right) + f(n)
 	\begin{cases}
 		f(n) = O(n^{\lg_b a - \epsilon}) & T(n) = \Theta(n^{\lg_b a}) \\
 		f(n) = \Theta(n^{\lg_b a}) & T(n) = \Theta(n^{\lg_b a} \lg n) \\
@@ -79,7 +79,7 @@ section \ref{ch:divideandconquer|sub:recurrences|subsub:substitution}).
 	\end{cases}
 \end{align}
 \begin{align}
-	a f(\frac{n}{b}) &\leq c f(n) \text{, for all sufficiently large } n
-	\text{, where } c < 1 \tag{*}
+	a f\left(\frac{n}{b}\right) &\leq c f(n)
+	\text{, for all sufficiently large } n \text{, where } c < 1 \tag{*}
 \end{align}
 
