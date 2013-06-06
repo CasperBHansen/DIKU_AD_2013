@@ -25,9 +25,11 @@ array, rather than the data structure itself. The reason a heap is a
 tree-structure is a visualization of the data, but not reflected by the data
 structure in any way.
 
-% TODO: properties of a heap, such as how to get a parent node, each of its
-% children, etc.
-
+Visualizing the array of a heap as a tree, we have that the root of the tree
+corresponds to the first element of the array $i = 0$ (zero-indexed). The
+parent of any node $n$ is given by $\lfloor n/2 \rfloor$. The children are
+given by $2n$ and $2n + 1$, for left and right, respectively.
+\\\\
 A heap, however, is not a priority queue in and of itself, it must adhere to
 a set of properties, and that is either the max- or min-heap properties.
 
