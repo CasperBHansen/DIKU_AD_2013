@@ -4,7 +4,7 @@
 \label{ch:divideandconquer}
 
 \textbf{Relevant Assignment} Problem ?-?\\\\
-\textbf{Pensum}CLRS Ch. 4 + 7 and SubCh. 2.3\\\\
+\textbf{Pensum} CLRS Ch. 4 + 7 and SubCh. 2.3\\\\
 \textbf{Algorithms} Merge sort, quicksort, fibonacci\\\\
 \textbf{Keywords} Recurrences, master method
 \vspace{1in}
@@ -67,31 +67,30 @@ section \ref{ch:divideandconquer|sub:recurrences|subsub:substitution}).
 \label{ch:divideandconquer|sub:recurrences|subsub:substitution}
 % p. 83-87, CLRS
 The substitution method for solving recurrences consists of
-two steps:\\
+two steps:
 \begin{itemize}
 \item Guess the form of the solution.
-\item Use mathematical induction to find constants in the form and show that the solution works.
+\item Use mathematical induction to find constants in the form and show that
+the solution works.
 \end{itemize}
 The inductive hypothesis is applied to smaller values,
 similar like recursive calls bring us closer to the base case
+\\\\
+\noindent \textbf{Example}\\
+The recurrence relation for the cost of a divide-and-conquer method is
+$T(n) = 2T( \lfloor n/2 \rfloor ) + n$. Our induction hypothesis of $T(n)$ is
+$O(nlog_2 (n))$ or $T(n) \leq cn \ log_2 (n)$ for some constant $c$,
+independent of $n$.
 
- \textbf{Example}\\
- The recurrence relation for the cost of a divide-and-conquer
-method is \\
-$T(n) = 2T( \lfloor n/2 \rfloor ) + n$.\\
-Our induction hypothesis is T(n)is $O(nlog_2 (n))$
-or $T(n) \leq cn \ log_2 (n)$ for some constant c, independent of n.
-Assume the hypothesis holds for all m < n and substitute: \\
-\\
-$ T(n)\ \leq \ 2(c \lfloor n/2 \rfloor log_2 (\lfloor n/2 \rfloor )) + n $ \\
-$ \leq cn\ log_2(n/2)+n $ \\
-$ = cn \ log_2(n) - cn \ log_2(2)+n $ \\
-$ = cn \ log_2(n) - cn + n $ \\
-$ \leq cn \ log_2 (n) $ \\
-\\
-as long as $ c \geq 1 $.
-
-
+Assume the hypothesis holds for all $m < n$ and substitute:
+\begin{align}
+	T(n) &\leq 2(c \lfloor n/2 \rfloor log_2 (\lfloor n/2 \rfloor )) + n \\
+	&\leq cn\ log_2(n/2)+n \\
+	&= cn \ log_2(n) - cn \ log_2(2)+n \\
+	&= cn \ log_2(n) - cn + n \\
+	&\leq cn \ log_2 (n)
+\end{align}
+as long as $c \geq 1$.
 
 \subsection{The Master Method}
 % p. 88-97, CLRS

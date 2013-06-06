@@ -6,7 +6,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-
 #pragma mark Datastructures
 typedef struct DYNAMIC_TABLE {
 	int size, num;
@@ -72,7 +71,7 @@ void tableInsert(Table * T, int x)
 	(* T) = t;
 }
 
-
+/*
 #pragma mark Main Program
 int main(int argc, const char * argv[])
 {
@@ -87,3 +86,4 @@ int main(int argc, const char * argv[])
 		
 	return 0;
 }
+*/
