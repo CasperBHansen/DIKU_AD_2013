@@ -10,9 +10,14 @@
 \vspace{1in}
 
 \noindent A minimum spanning tree $T$ is a is a tree or graph whose edges are
-a subset $T \subseteq E$ of a graph $G = (V, E)$, with weight function $w$,
-such that the weight of an edge $(u, v) \in E$ is determined by $w$, and the
-weight of the tree $T$ is minimized.
+a subset $T \subseteq E$ of a weighted graph $G = (V, E)$, with weight
+function $w$, such that the weight of an edge $(u, v) \in E$ is determined by
+$w$, and the weight of the tree $T$ is minimized.
+
+The total weight of a graph $T$ is given by the sum of all of its edge weights.
+\begin{align}
+	w(T) = \sum_{(u, v) \in T}w(u, v)
+\end{align}
 
 The term \textit{spanning} refers to the fact that the tree $T$ spans the
 entire set of vertices $V$, and the term \textit{minimum} refers to that the
@@ -23,9 +28,6 @@ tree $T$ is of minimum weight.
 % p. 626, CLRS
 ...
 \begin{algorithm}
-	\label{alg:generic-mst}
-	\caption{GenericMST}
-	
 	\SetKwInOut{Input}{Input}
 	\SetKwInOut{Output}{Output}
 	
@@ -46,10 +48,13 @@ tree $T$ is of minimum weight.
 			$A = A \cup \{(u, v)\}$
 		}
 	}
+	
+	\caption{GenericMST}
+	\label{alg:generic-mst}
 \end{algorithm}
 \subsection{Loop Invariant}
-We state the loop invariant of \ref{alg:generic-mst}; prior to each iteration,
-$A$ is a subset of some minimum spanning tree.
+We state the loop invariant of algorithm \ref{alg:generic-mst}; prior to each
+iteration, $A$ is a subset of some minimum spanning tree.
 \\\\
 \noindent \textbf{Initialization} \\
 After line 3, where we initialize the set $A$ to the empty set, $A$ trivially
@@ -57,7 +62,7 @@ satisfies the loop invariant, as the empty set is a subset of any set.
 \\\\
 \noindent \textbf{Maintenance} \\
 Lines 4-7 maintains the loop invariant, because we only add \textit{safe}
-edges to $A$. That is, edges $\{u, v\}$ where $A \cup \{(u, v)\}$ also
+edges to $A$. That is, edges $(u, v)$ where $A \cup \{(u, v)\}$ also
 satisfies the loop invariant.
 \\\\
 \noindent \textbf{Termination} \\
