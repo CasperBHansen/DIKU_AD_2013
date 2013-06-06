@@ -79,16 +79,15 @@ similar like recursive calls bring us closer to the base case
 \noindent \textbf{Example}\\
 The recurrence relation for the cost of a divide-and-conquer method is
 $T(n) = 2T( \lfloor n/2 \rfloor ) + n$. Our induction hypothesis of $T(n)$ is
-$O(nlog_2 (n))$ or $T(n) \leq cn \ log_2 (n)$ for some constant $c$,
-independent of $n$.
+$O(n \lg n)$ or $T(n) \leq cn \lg n$ for some constant $c$, independent of $n$.
 
 Assume the hypothesis holds for all $m < n$ and substitute:
 \begin{align}
-	T(n) &\leq 2(c \lfloor n/2 \rfloor log_2 (\lfloor n/2 \rfloor )) + n \\
-	&\leq cn\ log_2(n/2)+n \\
-	&= cn \ log_2(n) - cn \ log_2(2)+n \\
-	&= cn \ log_2(n) - cn + n \\
-	&\leq cn \ log_2 (n)
+	T(n) &\leq 2(c \lfloor n/2 \rfloor \lg_2 (\lfloor n/2 \rfloor )) + n \\
+	&\leq cn \lg_2(n/2)+n \\
+	&= cn \lg_2(n) - cn \lg_2(2)+n \\
+	&= cn \lg_2(n) - cn + n \\
+	&\leq cn \lg_2 (n)
 \end{align}
 as long as $c \geq 1$.
 
