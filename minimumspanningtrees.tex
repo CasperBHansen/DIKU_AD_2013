@@ -22,12 +22,49 @@ tree $T$ is of minimum weight.
 \section{Generic Minimum Spanning Tree}
 % p. 626, CLRS
 ...
-% TODO: pseudo-code of Generic-MST
+\begin{algorithm}
+	\label{alg:generic-mst}
+	\caption{GenericMST}
+	
+	\SetKwInOut{Input}{Input}
+	\SetKwInOut{Output}{Output}
+	
+	\SetKwFunction{GenericMST}{GenericMST}
+	
+	\Input{A graph $G = (V, E)$ and a weight function $w$ defined on $E$.}
+	\Output{A minimum spanning tree of $G$.}
+	
+	\BlankLine
+	
+	\GenericMST($G$, $w$) \\
+	\Begin
+	{
+		$A = \emptyset$ \\
+		\While{$A$ \textnormal{does not form a spanning tree}}
+		{
+			find an edge $(u, v)$ that is safe for $A$ \\
+			$A = A \cup \{(u, v)\}$
+		}
+	}
+\end{algorithm}
+\subsection{Loop Invariant}
+We state the loop invariant of \ref{alg:generic-mst}; prior to each iteration,
+$A$ is a subset of some minimum spanning tree.
+\\\\
+\noindent \textbf{Initialization} \\
+After line 3, where we initialize the set $A$ to the empty set, $A$ trivially
+satisfies the loop invariant, as the empty set is a subset of any set.
+\\\\
+\noindent \textbf{Maintenance} \\
+Lines 4-7 maintains the loop invariant, because we only add \textit{safe}
+edges to $A$. That is, edges $\{u, v\}$ where $A \cup \{(u, v)\}$ also
+satisfies the loop invariant.
+\\\\
+\noindent \textbf{Termination} \\
+Since all edges added to $A$ are in a minimum spanning tree, $A$ must be a
+minimum spanning tree of $G$.
 
-% TODO: state the loop-invariant
-
-% TODO: prove the loop-invariant holds
-
+\newpage
 \section{Kruskal's Algorithm}
 % p. 631
 ...
