@@ -106,4 +106,11 @@ as long as $c \geq 1$.
 	a f\left(\frac{n}{b}\right) &\leq c f(n)
 	\text{, for all sufficiently large } n \text{, where } c < 1 \tag{*}
 \end{align}
+The first case $O(n^{\lg_b a - \epsilon})$ is occurs when the \textit{divide}
+step of the algorithm contributes the most to the complexity of the algorithm,
+since $n^{\lg_b a} > f(n)$, and we therefore have to account for this by
+subtracting $\epsilon$ from the exponent on the left-hand side. Vice versa for
+the third case $O(n^{\lg_b a + \epsilon})$, which is symmetric. The second case
+$\Theta(n^{\lg_b a})$ occurs when both steps, the \textit{divide} and
+\textit{combine} step, are of the same complexity.
 
