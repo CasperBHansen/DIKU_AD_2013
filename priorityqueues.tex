@@ -1,29 +1,21 @@
-%========== Priority Queues ==========%
+%========== Heaps ==========%
 
-\chapter{Priority Queues}
-\label{ch:priorityqueues}
+\chapter{Heaps}
+\label{ch:heaps}
 
 \textbf{Relevant Assignment} Problem ?-?\\\\
 \textbf{Pensum} CLRS Ch. 6\\\\
-\textbf{Keywords} Min- and maxheap, stacks
+\textbf{Keywords} Min- and maxheap, priority queues
 \vspace{1in}
 
-\noindent A priority queue is an abstract data structure, which sorts and
-maintains a set of data in such a way, that the data is prioritized. It is an
-important distinction to make that a priority queue isn't a particular data
-structure, but rather a class of data structures. Data structures that work
-well with this notion include stacks, heaps, self-organizing lists, etc.
-We will focus mainly on heaps.
-
-\section{Heap}
-A heap is a nearly complete $n$-nary tree, we will concern ourselves only with
-binary heaps - and as such, a binary heap is a nearly complete binary tree. A
-heap, in the sense of priority queues implements a set $S$ of elements, in
-which each element has an associated key. The actual structure of a heap is
-simply an array, and so a heap is defined by the operations performed on an
-array, rather than the data structure itself. The reason a heap is a
-tree-structure is a visualization of the data, but not reflected by the data
-structure in any way.
+\noindent A heap is a nearly complete $n$-nary tree, we will concern ourselves
+only with binary heaps - and as such, a binary heap is a nearly complete
+binary tree. A heap, in the sense of priority queues implements a set $S$ of
+elements, in which each element has an associated key. The actual structure of
+a heap is simply an array, and so a heap is defined by the operations
+performed on an array, rather than the data structure itself. The reason a
+heap is a tree-structure is a visualization of the data, but not reflected by
+the data structure in any way.
 
 Visualizing the array of a heap as a tree, we have that the root of the tree
 corresponds to the first element of the array $i = 0$ (zero-indexed). The
@@ -43,12 +35,13 @@ must show that the their property is maintained by each of these procedures.
 
 % TODO: prove that all procedures maintain the max- or min-heap property
 
-\subsection{Applications}
+\section{Applications}
 ...
 
-\section{Stack}
-% extra stuff, don't focus on this, I think.
-A stack is one of the simplest queuing data structures. [...]
-
-\subsection{Applications}
-...
+\subsection{Priority Queues}
+A priority queue is an abstract data structure, which sorts and
+maintains a set of data in such a way, that the data is prioritized. It is an
+important distinction to make that a priority queue isn't a particular data
+structure, but rather a class of data structures. Data structures that work
+well with this notion include stacks, heaps, self-organizing lists, etc.
+We will focus mainly on heaps.
