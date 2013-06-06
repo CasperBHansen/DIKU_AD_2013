@@ -93,7 +93,13 @@ as long as $c \geq 1$.
 
 \subsection{The Master Method}
 % p. 88-97, CLRS
-...
+For a divide-and-conquer algorithm $T(n)$, let $a$ denote the number of
+subproblems created, and $n/b$ denote the size of each of these, on each
+recursion. For each recursion we have a combine step, which takes $f(n)$.
+We then have a recurrence of the form $T(n) = a T(n/b) + f(n)$.
+
+Algorithms of this form can be solved by means of the master theorem, which
+is given by
 \begin{align}
 	T(n) &= a T\left(\frac{n}{b}\right) + f(n)
 	\begin{cases}
@@ -102,6 +108,7 @@ as long as $c \geq 1$.
 		f(n) = O(n^{\lg_b a + \epsilon}) & * \Rightarrow T(n) = \Theta(f(n))
 	\end{cases}
 \end{align}
+where $a \geq 1$, $b > 1$ and $\epsilon > 0$.
 \begin{align}
 	a f\left(\frac{n}{b}\right) &\leq c f(n)
 	\text{, for all sufficiently large } n \text{, where } c < 1 \tag{*}
@@ -113,4 +120,18 @@ subtracting $\epsilon$ from the exponent on the left-hand side. Vice versa for
 the third case $O(n^{\lg_b a + \epsilon})$, which is symmetric. The second
 case $\Theta(n^{\lg_b a})$ occurs when both steps, the \textit{divide} and
 \textit{combine} step, are of the same complexity.
+\\\\
+\noindent \textbf{Example} \\
+Consider the recurrence $T(n) = 2T(n/2) + f(n)$ of merge sort. We identify the
+variables values as $a = 2$ since each recursive call creates two subproblems
+and $b = 2$ since each of these are of $n/2$ the size of the previous problem.
+The combine step is of linear time $\Theta(n)$.
+
+We then have that $O(n^{\lg_2 2}) = f(n)$, since $f(n) = \Theta(n)$ and this
+satisfies the previous equation, because $O(n^{\lg_2 2}) = \Theta(n)$.
+Therefore, the second case of the master theorem applies to this algorithm,
+and the complexity of it is then $\Theta(n^{lg_2 2}\lg n) = \Theta(n \lg n)$.
+
+
+
 
