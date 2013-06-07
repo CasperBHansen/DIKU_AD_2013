@@ -5,7 +5,7 @@
 
 \textbf{Relevant Assignment} Problem ?-?\\\\
 \textbf{Pensum} CLRS Ch. 6\\\\
-\textbf{Keywords} Min- and maxheap, priority queues
+\textbf{Keywords} Min- and maxheap, sorting, priority queues
 \vspace{1in}
 
 \noindent A heap is a nearly complete $n$-nary tree, we will concern ourselves
@@ -74,14 +74,7 @@ as a tree-structure, as shown in the following figure.
 \end{figure}
 ...
 
-\section{Procedures}
-...
-% TODO: prove that all procedures maintain the max- or min-heap property
-
-\section{Applications}
-...
-
-\subsection{Priority Queues}
+\section{Priority Queues}
 A priority queue is an abstract data structure, which sorts and maintains a
 set of data in such a way, that the data is prioritized. It is an important
 distinction to make that a priority queue isn't a particular data structure,
@@ -99,4 +92,31 @@ keys of its children.
 \end{description}
 As the max- and min heaps are defined by the procedures performed on them, we
 must show that the their property is maintained by each of these procedures.
+
+% pseudo-code for building and maintaining a max- or min-heap (*-heapify and
+% build-*-heap, along with explanation for these.
+
+\section{Procedures}
+These are the procedures that are supported by max- or min-heaps.
+
+\subsection{Insertion}
+...
+
+% TODO: pseudo-code, complexity
+
+\subsection{Extraction}
+When we want to extract an element out of a heap, because of its practical use
+we are typically interested only in the root node. Getting the root node is a
+trivial problem, we simply return the element at index zero - for a max-heap,
+this would be the element with the largest key in the set, vice versa for a
+min-heap.
+
+% TODO: pseudo-code, complexity
+
+\subsection{Increase key}
+...
+
+% TODO: pseudo-code, complexity
+
+% TODO: prove that all procedures maintain the max- or min-heap property
 
