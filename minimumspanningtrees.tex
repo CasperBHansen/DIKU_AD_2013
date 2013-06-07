@@ -6,7 +6,8 @@
 \textbf{Relevant Assignment} Problem 16-1\\\\
 \textbf{Pensum} CLRS Ch. 23\\\\
 \textbf{Algorithms} Kruskal's, Prim's\\\\
-\textbf{Keywords} Greedy, representation invariant, binary- and fibonacci-heap
+\textbf{Keywords} Greedy, optimal substructure, representation invariant,
+binary- and fibonacci-heap
 \vspace{1in}
 
 \noindent A minimum spanning tree $T$ is a is a tree or graph whose edges are
@@ -23,10 +24,19 @@ The term \textit{spanning} refers to the fact that the tree $T$ spans the
 entire set of vertices $V$, and the term \textit{minimum} refers to that the
 tree $T$ is of minimum weight.
 
+\section{Optimal Substructure}
+...
+
+\section{Overlapping Subproblems}
+...
+% TODO: prove that removing an edge (u, v) yields two separate trees.
+
 \newpage
 \section{Generic Minimum Spanning Tree}
 % p. 626, CLRS
-...
+The algorithm given below for finding the minimum spanning tree is a
+generalization, meaning that it is somewhat loosely defined. As such, this
+is merely a template for building an actual algorithm.
 \begin{algorithm}
 	\SetKwInOut{Input}{Input}
 	\SetKwInOut{Output}{Output}
@@ -78,6 +88,54 @@ minimum spanning tree of $G$.
 
 \section{Prim's Algorithm}
 % p. 634
-...
+This algorithm relies on a priority queue (see section
+\ref{ch:heaps|sub:priorityqueues} on page \pageref{ch:heaps|sub:priorityqueues}
+for more on this topic).
+\\\\
+\begin{algorithm}[H]
+	\caption{Prim's algorithm}
+	\label{alg:prim-mst}
+	
+	\SetKwInOut{Input}{Input}
+	\SetKwInOut{Output}{Output}
+	
+	\SetKwFunction{PrimMST}{PrimMST}
+	\SetKwFunction{ExtractMin}{ExtractMin}
+	
+	\SetKw{Nil}{NIL}
+	
+	\Input{A graph $G$, a weight function $w$ and an arbitrary root $r$.}
+	\Output{In-place minimized spanning tree of $G$.}
+	
+	\BlankLine
+	\PrimMST($G$, $w$, $r$) \\
+	\Begin
+	{
+		% initialization O(V)
+		\For{$u \in G.V$}
+		{
+			$u.key = \infty$ \\
+			$u.\pi = $ \Nil
+		}
+		$r.key = 0$ \\
+		$Q = G.V$ \\
+		
+		% ... O(?)
+		\While{$Q \neq \emptyset$}
+		{
+			$u = \ExtractMin(Q)$ \\
+			\For{$v \in G.Adj[u]$}
+			{
+				\If{$v \in Q$ \textnormal{and} $w(u, v) < v.key$}
+				{
+					$v.\pi = u$ \\
+					$v.key = w(u, v)$
+				}
+			}
+		}
+	}
+\end{algorithm}
+If we relate it to algorithm \ref{alg:generic-mst} we see that for Prim's
+algorithm the exit condition of forming a spanning tree takes the form of
+emptying a priority queue.
 
-% TODO: pseudo-code
