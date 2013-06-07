@@ -53,7 +53,57 @@ tree-structure, such that we may make a guess as to the complexity of an
 algorithm.
 
 \begin{figure}[h]
-	% TODO: make figure
+	\center
+	\begin{tikzpicture}
+	[
+	scale=1.0,
+	align=center,
+	every node/.style={circle, fill=white, draw=black}
+	]
+		% level 1
+		\node (n1) at 	(3.5, -1) {$cn$};
+		
+		% level 2
+		\node (n2) at 	(1.5, -2) {$c\frac{n}{2}$};
+		\node (n3) at 	(5.5, -2) {$c\frac{n}{2}$};
+		
+		% level 3
+		\node (n4) at 	(0.5, -3) {$c\frac{n}{4}$};
+		\node (n5) at 	(2.5, -3) {$c\frac{n}{4}$};
+		\node (n6) at 	(4.5, -3) {$c\frac{n}{4}$};
+		\node (n7) at 	(6.5, -3) {$c\frac{n}{4}$};
+		
+		% level 4
+		\node (n8) at 	(0, -4) {$c\frac{n}{8}$};
+		\node (n9) at 	(1, -4) {$c\frac{n}{8}$};
+		\node (n10) at 	(2, -4) {$c\frac{n}{8}$};
+		\node (n11) at 	(3, -4) {$c\frac{n}{8}$};
+		\node (n12) at 	(4, -4) {$c\frac{n}{8}$};
+		\node (n13) at 	(5, -4) {$c\frac{n}{8}$};
+		\node (n14) at 	(6, -4) {$c\frac{n}{8}$};
+		\node (n15) at 	(7, -4) {$c\frac{n}{8}$};
+		
+		% bottom-out level
+		\node (l1) at (0, -6) {$\Theta(1)$};
+		\node (l2) at (2.25, -6) {$\Theta(1)$};
+		\node (l3) at (4.75, -6) {$\Theta(1)$};
+		\node (l4) at (7, -6) {$\Theta(1)$};
+		
+		% drawing code
+		\draw [dashed] (0, -4.5) -- (0, -5.35);
+		\draw [dashed] (1, -4.5) -- (1, -5.35);
+		\draw [dashed] (2, -4.5) -- (2, -5.35);
+		\draw [dashed] (3, -4.5) -- (3, -5.35);
+		\draw [dashed] (4, -4.5) -- (4, -5.35);
+		\draw [dashed] (5, -4.5) -- (5, -5.35);
+		\draw [dashed] (6, -4.5) -- (6, -5.35);
+		\draw [dashed] (7, -4.5) -- (7, -5.35);
+		\foreach \from/\to in {n1/n2,n1/n3} \draw (\from) -- (\to);
+		\foreach \from/\to in {n2/n4,n2/n5,n3/n6,n3/n7} \draw (\from) -- (\to);
+		\foreach \from/\to in {n4/n8,n4/n9,n5/n10,n5/n11,n6/n12,n6/n13,n7/n14,n7/n15} \draw (\from) -- (\to);
+		\foreach \from/\to in {l1/l2,l2/l3,l3/l4} \draw [dotted] (\from) -- (\to);
+	\end{tikzpicture}
+
 	\caption{Recurrence tree of merge sort.}
 \end{figure}
 
