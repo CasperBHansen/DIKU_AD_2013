@@ -54,7 +54,8 @@ linear time $O(n)$.
 	leaf/.style={circle, fill=white}
 	]
 		% transition
-		% ehm, I'm not sure how to do this. Moving on to save time.
+		\draw [->, dotted] (4, 2) -- node [above] {\small \texttt{RightRotate($T$, $y$)}} (6, 2);
+		\draw [<-, dotted] (4, 0) -- node [above] {\small \texttt{LeftRotate($T$, $x$)}} (6, 0);
 		
 		% left
 		\node (le) [empty] at 	(2, 3) {};
