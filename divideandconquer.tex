@@ -143,6 +143,7 @@ as long as $c \geq 1$.
 
 \newpage
 \subsection{The Master Method}
+\label{ch:divideandconquer|sub:recurrences|sub:master-theorem}
 % p. 88-97, CLRS
 For a divide-and-conquer algorithm $T(n)$, let $a$ denote the number of
 subproblems created, and $n/b$ denote the size of each of these, on each
@@ -152,6 +153,7 @@ We then have a recurrence of the form $T(n) = a T(n/b) + f(n)$.
 Algorithms of this form can be solved by means of the master theorem, which
 is given by
 \begin{align}
+\label{eqn:master-theorem}
 	T(n) &= a T\left(\frac{n}{b}\right) + f(n)
 	\begin{cases}
 		f(n) = O(n^{\lg_b a - \epsilon}) & T(n) = \Theta(n^{\lg_b a}) \\
