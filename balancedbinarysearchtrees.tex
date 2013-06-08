@@ -6,7 +6,7 @@
 \textbf{Relevant Assignment} Problem 13-3\\\\
 \textbf{Pensum} CLRS Ch. 12 + 13\\\\
 \textbf{Algorithms} Red-black, AVL\\\\
-\textbf{Keywords} BST structure- and property, rotation
+\textbf{Keywords} BST structure- and property, rebalance, rotation
 \vspace{1in}
 
 \noindent A binary search tree is a node-based data structure that uses
@@ -43,6 +43,46 @@ linear time $O(n)$.
 
 \section{Rotation}
 ...
+\begin{figure}[H]
+	\center
+	\begin{tikzpicture}
+	[
+	scale=1.0,
+	align=center,
+	empty/.style={},
+	node/.style={circle, fill=white, draw=black},
+	leaf/.style={circle, fill=white}
+	]
+		% transition
+		% ehm, I'm not sure how to do this. Moving on to save time.
+		
+		% left
+		\node (le) [empty] at 	(2, 3) {};
+		
+		\node (ly) [node] at 	(2, 2) {$y$};
+		\node (lx) [node] at	(1, 1) {$x$};
+		
+		\node (la) [leaf] at 	(0, 0) {$\alpha$};
+		\node (lb) [leaf] at 	(2, 0) {$\beta$};
+		\node (lc) [leaf] at 	(3, 1) {$\gamma$};
+	
+		% right
+		\node (re) [empty] at 	(8, 3) {};
+		
+		\node (ry) [node] at 	(9, 1) {$y$};
+		\node (rx) [node] at	(8, 2) {$x$};
+		
+		\node (ra) [leaf] at 	(7, 1) {$\alpha$};
+		\node (rb) [leaf] at 	(8, 0) {$\beta$};
+		\node (rc) [leaf] at 	(10, 0) {$\gamma$};	
+		% drawing code
+		\foreach \from/\to in {le/ly,ly/lx,lx/la,lx/lb,ly/lc} \draw (\from) -- (\to);
+		\foreach \from/\to in {re/rx,rx/ra,rx/ry,ry/rb,ry/rc} \draw (\from) -- (\to);
+	\end{tikzpicture}
+	\caption{Left- and right BST rotations}
+	\label{fig:bst-rotations}
+\end{figure}
+...
 
 % TODO: prove the run-time
 
@@ -50,5 +90,8 @@ linear time $O(n)$.
 When we use a balanced implementation of binary search trees, such as
 \textit{red-black}- or \textit{AVL}-trees, we must maintain certain
 properties, which are typically accounted for after applying an alteration on
-the tree - this is called \textit{rebalancing}.
+the tree - this is called \textit{rebalancing} - whenever a tree gets
+unbalanced, as the result of an operation performed on it, we say that the
+tree is \textit{left- or right heavy}.
 
+% TODO: write up cases for unbalanced trees, and how to fix them up.
