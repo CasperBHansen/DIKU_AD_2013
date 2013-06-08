@@ -94,7 +94,7 @@ As the max- and min heaps are defined by the procedures performed on them, we
 must show that the their property is maintained by each of these procedures.
 
 \begin{algorithm}[H]
-	\caption{Max-heapify algorithm}
+	\caption{Max-heapify}
 	\label{alg:max-heapify}
 	
 	\SetKwInOut{Input}{Input}
@@ -151,6 +151,7 @@ the violating node travels only in a downward path.
 	
 	\SetKwInOut{Input}{Input}
 	\SetKwInOut{Output}{Output}
+	\SetKwInOut{Invariant}{Invariant}
 	
 	\SetKwFunction{BuildMaxHeap}{BuildMaxHeap}
 	\SetKwFunction{MaxHeapify}{MaxHeapify}
@@ -159,6 +160,7 @@ the violating node travels only in a downward path.
 	
 	\Input{An array $A$}
 	\Output{In-place heapifying the array $A$.}
+	\Invariant{MISSING, RESERVED FOR FORMAL PROOF}
 	
 	\BlankLine
 	\BuildMaxHeap($A$) \\
@@ -171,7 +173,18 @@ the violating node travels only in a downward path.
 		}
 	}
 \end{algorithm}
-% TODO: explain and give short complexity analysis.
+...
+\\\\
+\noindent \textbf{Initialization} \\
+...
+\\\\
+\noindent \textbf{Maintenance} \\
+...
+\\\\
+\noindent \textbf{Termination} \\
+...
+
+\newpage
 
 \section{Procedures}
 These are the procedures that are supported by max- or min-heaps.
