@@ -6,15 +6,31 @@
 \textbf{Relevant Assignment} Problem 13-3\\\\
 \textbf{Pensum} CLRS Ch. 12 + 13\\\\
 \textbf{Algorithms} Red-black, AVL\\\\
-\textbf{Keywords} Rotation
+\textbf{Keywords} BST structure- and property, rotation
 \vspace{1in}
 
 \noindent A binary search tree is a node-based data structure that uses
 pointers to keep the structure of a a set of nodes intact. Since the data
-structure is purely held together by pointers performing alterations on it
+structure is purely held together by pointers, performing alterations on it
 is very fast.
+\\\\
+\noindent \textbf{Structure} \\
+Each node holds a $key$ and three pointers; one for each child-node, $left$
+and $right$, and one for its parent-node $p$.
+\\\\
+\noindent \textbf{Property} \\
+Let $x$ be a node in a binary search tree. If $y$ is a node in the left
+subtree of $x$, then $y.key \leq x.key$. If $y$ is a node in the right
+subtree of $x$, then $y.key \geq x.key$.
 
 \newpage
+\section{Searching}
+Given the structure of a binary search tree, searching for a particular entry
+is at most $O(\lg n)$, assuming that the tree is balanced. Should the tree not
+be balanced the worst-case scenario is that the tree only has left- or right-
+hand side children, which then produces a list, and searching a list takes
+linear time $O(n)$.
+ 
 \section{Insertion}
 ...
 
