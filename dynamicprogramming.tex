@@ -121,10 +121,12 @@ We give the recursive -and inefficient- algorithm to solve this problem. \\\\
 \end{algorithm}
 The reason this algorithm is inefficient, is because it calculates the same
 inputs many times. We can improve algorithm \ref{alg:cut-rod|type:recursive}
-using dynamic programming, first off showing the top-down with memoization
-approach.
+using dynamic programming.
 
+\newpage
 \subsection{Top-down Rod-cutting}
+The main difference in this approach is that we store all inputs that we
+haven't computed already. \\\\
 \begin{algorithm}[H]
 	\caption{Top-down rod-cutting procedure}
 	\label{alg:cut-rod|type:memoized}
@@ -150,7 +152,8 @@ approach.
 		\Return \MemoizedCutRodAux($p$, $n$, $r$)
 	}
 \end{algorithm}
-... \\\\
+The actual work is done by the auxiliary procedure, which is basically the
+same, with minor differences compared to the recursive procedure. \\\\
 \begin{algorithm}[H]
 	\caption{Top-down rod-cutting auxiliary procedure}
 	\label{alg:cut-rod|type:auxiliary}
@@ -177,10 +180,12 @@ approach.
 		\Return $q$
 	}
 \end{algorithm}
-...
 
 \subsection{Bottom-up Rod-cutting}
-...
+The bottom-up procedure solves the problem in the order of smaller subproblems
+first. It does so by maintaining two figurative pointers of the rod and
+continually replacing the previously found $r[i]$, should it to find a better
+solution for the next iteration. \\\\
 \begin{algorithm}[H]
 	\caption{Bottom-up rod-cutting procedure}
 	\label{alg:cut-rod|type:bottom-up}
