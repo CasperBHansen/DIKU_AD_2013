@@ -86,16 +86,93 @@ mainly on heaps.
 A heap, however, is not a priority queue in and of itself, it must adhere to
 a set of properties, and that is either the max- or min-heap properties.
 \begin{description}
-	\item \textbf{Max-Heap} The key of a node is greater than or equal to the
+	\item \textbf{Max-heap} The key of a node is greater than or equal to the
 keys of its children.
-	\item \textbf{Min-Heap} The key of a node is less than or equal to the
+	\item \textbf{Min-heap} The key of a node is less than or equal to the
 keys of its children.
 \end{description}
 As the max- and min heaps are defined by the procedures performed on them, we
 must show that the their property is maintained by each of these procedures.
 
-% pseudo-code for building and maintaining a max- or min-heap (*-heapify and
-% build-*-heap, along with explanation for these.
+\begin{algorithm}[H]
+	\caption{Max-heapify algorithm}
+	\label{alg:max-heapify}
+	
+	\SetKwInOut{Input}{Input}
+	\SetKwInOut{Output}{Output}
+	
+	\SetKwFunction{MaxHeapify}{MaxHeapify}
+	\SetKwFunction{Left}{Left}
+	\SetKwFunction{Right}{Right}
+	
+	\Input{An array $A$ and index $i$}
+	\Output{In-place swapping max-heap property violations of $A$.}
+	
+	\BlankLine
+	\MaxHeapify($A$, $i$) \\
+	\Begin
+	{
+		$l = $ \Left($i$) \\
+		$r = $ \Right($i$) \\
+		$largest = i$ \\
+		\If{$l \leq A.size $ \textnormal{and} $A[l] > A[i]$}
+		{
+			$largest = l$ \\
+		}
+		\If{$r \leq A.size $ \textnormal{and} $A[r] > A[largest]$}
+		{
+			$largest = l$ \\
+		}
+		\If{$largest \neq i$}
+		{
+			Swap $A[i]$ and $A[largest]$ \\
+			\MaxHeapify($A$, $largest$)
+		}
+	}
+\end{algorithm}
+Obviously, this function can easily be changed to \textit{min-heapify}, simply
+by exchanging the conditional statements of $\leq$ with $\geq$, and likewise
+$>$ to $<$. The procedure looks for a violation of the max-heap property,
+restoring it by correcting that particular instance and check for further
+violations on the corrected index.
+
+Assuming the worst case, where the subproblem size is $2n/3$ we get the
+recurrence $T(n) \leq T(2n/3) + \Theta(1)$, which by the master theorem (see
+section \ref{eqn:master-theorem}) gives us $T(n) = O(\lg n)$, which
+conveniently translates to the height of a tree - so for a given node $i$, we
+at most correct a \textit{simple path} of the tree, or we can visualize it as
+the violating node travels only in a downward path.
+
+% possibly shorten the above, making space for explanation of the next
+% algorithm, such that maybe we can have it all on one page.
+
+\begin{algorithm}[H]
+	\caption{Build max-heap}
+	\label{alg:build-max-heap}
+	
+	\SetKwInOut{Input}{Input}
+	\SetKwInOut{Output}{Output}
+	
+	\SetKwFunction{BuildMaxHeap}{BuildMaxHeap}
+	\SetKwFunction{MaxHeapify}{MaxHeapify}
+	
+	\SetKw{DownTo}{ down to }
+	
+	\Input{An array $A$}
+	\Output{In-place heapifying the array $A$.}
+	
+	\BlankLine
+	\BuildMaxHeap($A$) \\
+	\Begin
+	{
+		$A.size = A.length$ \\
+		\For{$i = \lfloor A.length/2 \rfloor \DownTo 1$}
+		{
+			\MaxHeapify($A$, $i$)
+		}
+	}
+\end{algorithm}
+% pseudo-code for building a *-heap, along with explanation for these.
 
 \section{Procedures}
 These are the procedures that are supported by max- or min-heaps.
