@@ -3,13 +3,17 @@
 \chapter{Greedy Algorithms}
 \label{ch:greedyalgorithms}
 
-\textbf{Relevant Assignment} Problem 16-1 \\\\
-\textbf{Pensum} CLRS Ch. 16\\\\
+\textbf{Pensum} 16 \cite{clrs} \\\\
+\textbf{Assignments} 16-1 \\\\
 \textbf{Algorithms} Rod-cutting \\\\
-\textbf{Keywords} Optimal solution
+\textbf{Keywords} The greedy choice, local- and global optimal solution
 \vspace{1in}
 
-\noindent Greedy algorithms follow an algorithmic methodology which [...] 
+\noindent Greedy algorithms follow an algorithmic methodology that makes a
+series of choices under the assumption that the choice that seems best at the
+moment (a \textit{locally optimal solution}) will produce \textit{globally
+optimal solution} - this isn't always the case, but in some cases we can prove
+that it does.
 \\\\
 \noindent \textbf{Dynamic Programming} \\
 Although greedy problems often exhibit the same characteristics as a dynamic
@@ -21,10 +25,30 @@ rather makes a locally optimal choice \textit{in the hope} that this will lead
 to a globally optimal solution - we can, however, show that it will for some
 problems.
 
-\section{Proving The Greedy Choice}
+\newpage
+\section{The Greedy Strategy}
+Here we list the procedure one must follow in order to design a greedy
+algorithm. Each point will be discussed in depth under its own section.
+\begin{enumerate}
+	\item \textbf{Describe} the optimization problem as one in which making a
+choice, we are left with one subproblem.
+	\item \textbf{Prove} that the greedy choice always yields a globally
+optimal solution.
+	\item \textbf{Demonstrate} optimal substructure by showing that, having
+made a greedy choice, what remains is a subproblem with the property that if
+we combine an optimal solution with the greedy greedy choice, we arrive at an
+optimal solution to the original problem.
+\end{enumerate}
+
+\subsection{Describing the Optimization Problem}
+% p. ?-?, CLRS
+...
+
+\subsection{Proving The Greedy Choice}
 % p. 424, CLRS
 ...
 
-\section{Designing Greedy Algorithms}
-% p. 423-424, CLRS
+\subsection{Demonstrating Optimal Substructure}
+% p. ?-?, CLRS
 ...
+
