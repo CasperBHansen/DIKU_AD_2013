@@ -206,9 +206,7 @@ on the height $h = \lfloor \lg n \rfloor$, and has at most $\lceil n/2^{h+1}
 \label{ch:heaps|sec:procedures}
 These are the procedures that are supported by max- or min-heaps.
 
-\subsection{Insertion}
-\label{ch:heaps|sec:procedures|sub:insertion}
-...
+
 
 % TODO: pseudo-code, complexity
 
@@ -271,7 +269,7 @@ min-heap.
 	\Begin
 	{
 		\If{$k < A[i]$}{ \Error "New key is smaller than the current key" }
-		$A[i] = key$ \\
+		$A[i] = k$ \\
 		\While{$i < 1 $ \And $A[$ \Parent($i$) $] < A[i]$}
 		{
 			Swap $A[i]$ with $A[$ \Parent($i$) $]$ \\
@@ -279,6 +277,32 @@ min-heap.
 		}
 	}
 \end{algorithm}
+
+\subsection{Insertion}
+\label{ch:heaps|sec:procedures|sub:insertion}
+\begin{algorithm}[H]
+	\caption{Heap insertion}
+	\label{alg:heap-insert}
+	
+	\SetKwInOut{Input}{Input}
+	\SetKwInOut{Output}{Output}
+	
+	\SetKwFunction{Insert}{Insert}
+	\SetKwFunction{IncreaseKey}{IncreaseKey}
+	
+	\Input{A heap $A$ and a key $k$.}
+	\Output{Inserts the key $k$ into the heap $A$.}
+	
+	\BlankLine
+	\Insert($A$, $k$) \\
+	\Begin
+	{
+		$A.size = A.size + 1$ \\
+		$A[A.size] = -\infty$ \\
+		\IncreaseKey($A$, $A.size$, $k$)
+	}
+\end{algorithm}
+
 
 % TODO: prove that all procedures maintain the max- or min-heap property
 
