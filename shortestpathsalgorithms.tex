@@ -31,6 +31,80 @@ We define the shortest path weight $\delta(u, v)$ from $u$ to $v$ by
 A \textit{shortest path} $p$ from $v$ to $u$ is defined as $w(p) =
 \delta(u, v)$.
 
+\section{Properties}
+We give the properties of shortest paths.
+
+\subsection{The Triangle Inequality}
+For any edge $(u, v) \in E$, we have $\delta(s, v) \leq \delta(s, u) +
+w(u, v)$ - meaning that a shortest path fulfills the triangle inequality (see
+appendix \ref{appendix:equations|eqn:triangle-inequality}).
+\begin{lemma}
+	\textbf{Triangle inequality property} \\
+	...
+\end{lemma}
+
+\begin{proof} \textnormal{\cite[p.~?, thm. 24.10]{clrs}} \\
+	...
+\end{proof}
+
+\subsection{Upper-bound}
+We always have $v.d \geq \delta(s, v)$ for all vertices $v \in V$, and once
+$v.d = \delta(s, v)$, it never changes.
+\begin{lemma}
+	\textbf{Upper-bound property} \\
+	...
+\end{lemma}
+
+\begin{proof} \textnormal{\cite[p.~?, thm. 24.11]{clrs}} \\
+	...
+\end{proof}
+
+\subsection{No-path}
+If there is no path from $s$ to $v$, then we always have $v.d = \delta(s, v) =
+\infty$.
+\begin{corollary}
+	\textbf{No-path property} \\
+	...
+\end{corollary}
+
+\begin{proof} \textnormal{\cite[p.~?, thm. 24.12]{clrs}} \\
+	...
+\end{proof}
+
+\subsection{Convergence}
+...
+\begin{lemma}
+	\textbf{Convergence property} \\
+	...
+\end{lemma}
+
+\begin{proof} \textnormal{\cite[p.~?, thm. 24.14]{clrs}} \\
+	...
+\end{proof}
+
+\subsection{Path-relaxation}
+...
+\begin{lemma}
+	\textbf{Path-relaxation property} \\
+	...
+\end{lemma}
+
+\begin{proof} \textnormal{\cite[p.~?, thm. 24.15]{clrs}} \\
+	...
+\end{proof}
+
+\subsection{Predecessor-subgraph}
+Once $v.d = \delta(s, v)$ for all $v \in V$, the predecessor subgraph is a
+shortest-paths tree rooted at $s$.
+\begin{lemma}
+	\textbf{Predecessor-subgraph property} \\
+	...
+\end{lemma}
+
+\begin{proof} \textnormal{\cite[p.~?, thm. 24.16]{clrs}} \\
+	...
+\end{proof}
+
 \newpage
 \section{Optimal Substructure}
 Shortest paths algorithms typically rely on the property that a shortest path
@@ -40,7 +114,7 @@ the key indicators of \textit{dynamic programming} (see chapter
 \ref{ch:greedyalgorithms}) problems.
 
 \begin{lemma}
-	\textbf{Subpaths of shortest paths are shortest paths}. \\
+	\textbf{Subpaths of shortest paths are shortest paths} \\
 	...
 \end{lemma} 
 
