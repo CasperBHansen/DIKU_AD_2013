@@ -220,7 +220,33 @@ trivial problem, we simply return the element at index zero - for a max-heap,
 this would be the element with the largest key in the set, vice versa for a
 min-heap.
 
-% TODO: pseudo-code, complexity
+\begin{algorithm}[H]
+	\caption{Extract max}
+	\label{alg:heap-extract-max}
+	
+	\SetKwInOut{Input}{Input}
+	\SetKwInOut{Output}{Output}
+	
+	\SetKw{Error}{error}
+	
+	\SetKwFunction{ExtractMax}{ExtractMax}
+	\SetKwFunction{MaxHeapify}{MaxHeapify}
+	
+	\Input{A heap $A$.}
+	\Output{Returns the maximum of a heap, removing it from the heap.}
+	
+	\BlankLine
+	\ExtractMax($A$) \\
+	\Begin
+	{
+		\If{$A.size < 1$}{ \Error "Heap underflow." }
+		$max = A[1]$ \\
+		$A[1] = A[A.size]$ \\
+		$A.size = A.size - 1$ \\
+		\MaxHeapify($A$, 1) \\
+		\Return $max$
+	}
+\end{algorithm}
 
 \subsection{Increase key}
 \label{ch:heaps|sec:procedures|sub:increase-key}
