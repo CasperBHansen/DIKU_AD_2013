@@ -355,3 +355,7 @@ calling the extraction procedure on it produces a sorted array.
 	}
 \end{algorithm}
 
+The initializing call to \texttt{BuildMaxHeap} takes $O(n)$ time, and each
+$n-1$ calls to \texttt{MaxHeapify} takes $O(\lg n)$ time. Thus the running-
+time of heap sort is $O(n \lg n)$.
+
