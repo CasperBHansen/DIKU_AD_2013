@@ -69,11 +69,52 @@ pair of vertices $u$ and $v$. This is essentially the single-source problem,
 but for all vertices in the set as the source.
 \end{description}
 
+\newpage
 \section{Bellman-Ford's Algorithm}
 % p. 651, CLRS
 ...
 
+\subsection{Analysis}
+...
+
+\newpage
 \section{Dijkstra's Algorithm}
 % p. 658, CLRS
+...
+\begin{algorithm}
+	\caption{Dijkstra's algorithm}
+	\label{alg:dijkstra}
+	
+	\SetKwInOut{Input}{Input}
+	\SetKwInOut{Output}{Output}
+	
+	\SetKwFunction{Dijkstra}{Dijkstra}
+	\SetKwFunction{InitSingleSource}{InitializeSingleSource}
+	\SetKwFunction{ExtractMin}{ExtractMin}
+	\SetKwFunction{Relax}{Relax}
+	
+	\Input{A graph $G$, a weight function $w$ and a source vertex $s$.}
+	\Output{...}
+	
+	\BlankLine
+	\Dijkstra($G$, $w$, $s$) \\
+	\Begin
+	{
+		\InitSingleSource($G$, $s$) \\
+		$S = \emptyset$ \\
+		$Q = G.V$ \\
+		\While{$Q \neq \emptyset$}
+		{
+			$u = $ \ExtractMin($Q$) \\
+			$S = S \cup \{u\}$ \\
+			\For{\textnormal{each vertex } $v \in G.Adj[u]$}
+			{
+				\Relax($u$, $v$, $w$)
+			}
+		}
+	}
+\end{algorithm}
+
+\subsection{Analysis}
 ...
 
