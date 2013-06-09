@@ -266,5 +266,29 @@ than the pivot has a higher index. Returns the pivot index.}
 	}
 \end{algorithm}
 
+\subsection{Proof}
+% p. 173, CLRS
+We state the loop invariant: at the beginning of each iteration of the
+\texttt{for}-loop on lines 5-10, for any array index $k$, the following
+holds
+\begin{enumerate}
+	\item If $p \leq k \leq i$, then $A[k] \leq x$.
+	\item If $i + 1 \leq k \leq j - 1$, then $A[k] > x$.
+	\item If $k = r$, then $A[k] = x$.
+\end{enumerate}
+\noindent \textbf{Initialization} Prior to the first iteration $i = p - 1$ and
+$j = p$ no values lies between $p$ and $i$, and no values lies between $i + 1$
+and $j - 1$, conditions 1 and 2 of the loop invariant are trivially
+satisfied. The assignment on line 3 satisfies condition 3. \\
+\\\\
+\noindent \textbf{Maintenance} Two cases must be accounted for here because of
+the \texttt{if}-statement on line 6; when $A[j] > x$, $j$ is incremented,
+which then satisfies condition 2 for $A[j - 1]$, everything else remains
+unchanged, thus satisfying conditions 1 and 3. [continue when blood sugar has
+returned to normal]
+\\\\
+\noindent \textbf{Termination} ...
+
 \subsection{Analysis}
+% p. 174-178, CLRS
 ...
