@@ -130,22 +130,16 @@ must show that the their property is maintained by each of these procedures.
 		}
 	}
 \end{algorithm}
-Obviously, this function can easily be changed to \textit{min-heapify}, simply
-by exchanging the conditional statements of $\leq$ with $\geq$, and likewise
-$>$ to $<$. The procedure looks for a violation of the max-heap property,
-restoring it by correcting that particular instance and check for further
-violations on the corrected index.
+The procedure looks for a violation of the max-heap property, restoring it by
+correcting that particular instance and check for further violations on the
+corrected index.
 
 Assuming the worst case, where the subproblem size is $2n/3$ we get the
 recurrence $T(n) \leq T(2n/3) + \Theta(1)$, which by the master theorem (see
 section \ref{eqn:master-theorem}) gives us $T(n) = O(\lg n)$, which
-conveniently translates to the height of a tree - so for a given node $i$, we
-at most correct a \textit{simple path} of the tree, or we can visualize it as
-the violating node travels only in a downward path.
-
-% possibly shorten the above, making space for explanation of the next
-% algorithm, such that maybe we can have it all on one page.
-
+conveniently translates to the height of a tree - so for a given node $i$, we,
+at most, correct a \textit{simple path} of the tree.
+\\\\
 \begin{algorithm}[H]
 	\caption{Build max-heap}
 	\label{alg:build-max-heap}
@@ -198,7 +192,24 @@ We can tighten this bound by observing that \texttt{MaxHeapify} is dependent
 on the height $h = \lfloor \lg n \rfloor$, and has at most $\lceil n/2^{h+1}
 \rceil$ nodes.
 
-[... continue later, break...]
+We can then express the upper bound by
+\begin{align}
+	\sum_{h=0}^{\left\lfloor \lg n \right\rfloor}
+	\lceil \frac {n}{2^{h+1}} \rceil O(h) =
+	O \left( n \sum_{h=0}^{\lfloor \lg n \rfloor} \frac{h}{2^h} \right)
+\end{align}
+the last summation can be evaluated using the formula in appendix
+\ref{appendix:equations|eqn:intdiff-series}, substituting $x = 1/2$, yielding
+\begin{align}
+	\sum_{h=0}^{\infty} \frac{h}{2^h} = \frac{1/2}{(1 - 1/2)^2} = 2
+\end{align}
+Thus, we can bound the running time of \texttt{BuildMaxHeap} as
+\begin{align}
+	O \left( n \sum_{h=0}^{\lfloor \lg n \rfloor} \frac{h}{2^h} \right) =
+	O \left( n \sum_{h=0}^{\infty} \frac{h}{2^h} \right) = O(n)
+\end{align}
+Hence the running-time of building a max-heap from an unordered array can be
+done in linear time.
 
 \newpage
 
