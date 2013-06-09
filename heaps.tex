@@ -250,9 +250,35 @@ min-heap.
 
 \subsection{Increase key}
 \label{ch:heaps|sec:procedures|sub:increase-key}
-...
-
-% TODO: pseudo-code, complexity
+\begin{algorithm}[H]
+	\caption{Increase key}
+	\label{alg:heap-increase-key}
+	
+	\SetKwInOut{Input}{Input}
+	\SetKwInOut{Output}{Output}
+	
+	\SetKw{Error}{error}
+	\SetKw{And}{ and }
+	
+	\SetKwFunction{IncreaseKey}{IncreaseKey}
+	\SetKwFunction{Parent}{Parent}
+	
+	\Input{A heap $A$, an index $i$ and a key $k$.}
+	\Output{Increases the key of index $i$ into the heap $A$ to the key $k$.}
+	
+	\BlankLine
+	\IncreaseKey($A$, $i$, $k$) \\
+	\Begin
+	{
+		\If{$k < A[i]$}{ \Error "New key is smaller than the current key" }
+		$A[i] = key$ \\
+		\While{$i < 1 $ \And $A[$ \Parent($i$) $] < A[i]$}
+		{
+			Swap $A[i]$ with $A[$ \Parent($i$) $]$ \\
+			$i = $ \Parent($i$)
+		}
+	}
+\end{algorithm}
 
 % TODO: prove that all procedures maintain the max- or min-heap property
 
