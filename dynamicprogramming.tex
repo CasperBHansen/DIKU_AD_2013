@@ -53,12 +53,11 @@ approach; top-down with memoization and bottom-up.
 \subsection{Top-down with Memoization}
 % taken directly from the CLRS book, good summary I think.
 In this approach, we write the procedure recursively in a natural manner, but
-modified to save the result of each subproblem (usually in an array or hash
-table). The procedure now first checks to see whether it has previously solved
-this problem. If so, it returns the saved value, saving further computation at
-this level; if not, the procedure computes the value in the usual manner. We
-say that the recursive procedure has been \textit{memoized}; it "remembers"
-what results it has computed previously.
+modified to save the result of each subproblem. The procedure checks to see
+if it has already solved this problem. If so, it returns a saved value, saving
+further computation at this level; if not, the procedure computes the value in
+the usual manner. We say that the recursive procedure has been
+\textit{memoized}; it "remembers" what results it has computed previously.
 
 The caveat of using the top-down approach is that we make time-memory
 trade-off, so what we gain in performance is payed in memory usage instead.
