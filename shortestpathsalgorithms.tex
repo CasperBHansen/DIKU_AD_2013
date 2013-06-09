@@ -5,13 +5,31 @@
 
 \textbf{Pensum} 24 \cite{clrs} \\\\
 \textbf{Assignments} 13-3 \\\\
-\textbf{Algorithms} Single-source, Dijkstra, Bellman-Ford \\\\
+\textbf{Algorithms} Single-source, Dijkstra, Bellman-Ford, breadth-first
+search \\\\
 \textbf{Keywords} Triangle inequality, relaxation, optimal substructure,
 represenation invariant
 \vspace{1in}
 
-\noindent ...
-% TODO: define the problem and/or the structure of a shortest path
+\noindent We are given a weighted, directed graph $G = (V, E)$, with weight
+function $w : E \rightarrow \mathbb{R}$, mapping the edges of the graph to
+real-valued weights. The \textit{weight} $w(p)$ of a \textit{path} $p =
+\langle v_0, v_1, \dots, v_k \rangle$ is the sum of the weights of its
+constituent edges.
+\begin{align}
+	w(p) = \sum_{k}^{i=1} w(v_{i-1}, v_i)
+\end{align}
+We define the shortest path weight $\delta(u, v)$ from $u$ to $v$ by
+\begin{align}
+	\delta(u, v) =
+	\begin{cases}
+		min\{w(p): u \rightarrow v\}
+		& \textnormal{if there is a path from $u$ to $v$,} \\
+		\infty & \textnormal{otherwise.}
+	\end{cases}
+\end{align}
+A \textit{shortest path} $p$ from $v$ to $u$ is defined as $w(p) =
+\delta(u, v)$.
 
 \newpage
 \section{Single-source Shortest Path}
