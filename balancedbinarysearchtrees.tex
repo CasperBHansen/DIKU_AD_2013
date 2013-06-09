@@ -39,14 +39,18 @@ The minimum and maximum procedures are simply search queries that looks only
 to the left or right, in the cases of minimum and maximum, respectively. As
 such, their running-time is the same as that of searching, $O(h)$.
 
-\subsection{Predecessor}
-...
+% \subsection{Predecessor}
+% ...
 
-\subsection{Successor}
-...
+% \subsection{Successor}
+% ...
 
 \subsection{Insertion}
-...
+Inserting a node into a binary search tree is quite simple; we search through
+the tree as usual until we find the spot where the node belongs. Since
+everything else in this procedure is done in constant time $\Theta(1)$, and
+all we are really doing is searching through the tree then it follows from the
+search procedure that the running-time must be $O(h)$.
 
 \subsection{Deletion}
 ...
