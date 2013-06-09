@@ -206,18 +206,12 @@ on the height $h = \lfloor \lg n \rfloor$, and has at most $\lceil n/2^{h+1}
 \label{ch:heaps|sec:procedures}
 These are the procedures that are supported by max- or min-heaps.
 
-
-
-% TODO: pseudo-code, complexity
-
 \subsection{Extraction}
 \label{ch:heaps|sec:procedures|sub:extraction}
 When we want to extract an element out of a heap, because of its practical use
-we are typically interested only in the root node. Getting the root node is a
-trivial problem, we simply return the element at index zero - for a max-heap,
-this would be the element with the largest key in the set, vice versa for a
-min-heap.
-
+we are typically interested only in the root node, which holds the maximum
+key. Getting the root node is a trivial problem, we simply return the element
+at index zero. \\
 \begin{algorithm}[H]
 	\caption{Extract max}
 	\label{alg:heap-extract-max}
@@ -245,8 +239,12 @@ min-heap.
 		\Return $max$
 	}
 \end{algorithm}
+Lines 2-8 take constant time $\Theta(1)$, and as such the running-time of an
+extraction operation is dictated by the call to \texttt{MaxHeapify}, which is
+$O(\lg n)$.
 
 \subsection{Increase key}
+Increasing the priority of an entry is done using the following procedure. \\
 \label{ch:heaps|sec:procedures|sub:increase-key}
 \begin{algorithm}[H]
 	\caption{Increase key}
@@ -277,8 +275,12 @@ min-heap.
 		}
 	}
 \end{algorithm}
+Lines 2-6 take constant time $\Theta(1)$. Like \texttt{MaxHeapify} the
+\texttt{while}-loop traces from the node, which in the worst case is a leaf,
+to the root, which gives us a worst-case of $O(\lg n)$.
 
 \subsection{Insertion}
+Inserting a key into a heap is done using the following procedure. \\
 \label{ch:heaps|sec:procedures|sub:insertion}
 \begin{algorithm}[H]
 	\caption{Heap insertion}
@@ -302,10 +304,10 @@ min-heap.
 		\IncreaseKey($A$, $A.size$, $k$)
 	}
 \end{algorithm}
+Lines 2-4 take constant time $\Theta(1)$, and thusly inherits its complexity
+from the call to \texttt{IncreaseKey}, which is $O(\lg n)$.
 
-
-% TODO: prove that all procedures maintain the max- or min-heap property
-
+\newpage
 \section{Sorting}
 Given that the procedure for extraction, as defined in section
 \ref{ch:heaps|sec:procedures|sub:extraction}, one can easily imagine that
