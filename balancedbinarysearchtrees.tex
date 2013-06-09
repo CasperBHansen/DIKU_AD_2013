@@ -24,25 +24,36 @@ subtree of $x$, then $y.key \leq x.key$. If $y$ is a node in the right
 subtree of $x$, then $y.key \geq x.key$.
 
 \newpage
-\section{Searching}
+\section{Operations}
+Here we give the common operations performed on binary search trees.
+
+\subsection{Searching}
 Given the structure of a binary search tree, searching for a particular entry
 is at most $O(\lg n)$, assuming that the tree is balanced. Should the tree not
 be balanced the worst-case scenario is that the tree only has left- or right-
 hand side children, which then produces a list, and searching a list takes
-linear time $O(n)$.
- 
-\section{Insertion}
+linear time $O(n)$. More specifically it is $O(h)$, where $h$ is the height.
+
+\subsection{Minimum and Maximum}
+The minimum and maximum procedures are simply search queries that looks only
+to the left or right, in the cases of minimum and maximum, respectively. As
+such, their running-time is the same as that of searching, $O(h)$.
+
+\subsection{Predecessor}
 ...
 
-% TODO: prove the run-time.
-
-\section{Deletion}
+\subsection{Successor}
 ...
 
-% TODO: prove the run-time
-
-\section{Rotation}
+\subsection{Insertion}
 ...
+
+\subsection{Deletion}
+...
+
+\subsection{Rotation}
+There are two forms of rotation; left- and right-rotation. These are simply
+pointer manipulations of the immediate nodes.
 \begin{figure}[H]
 	\center
 	\begin{tikzpicture}
@@ -83,9 +94,8 @@ linear time $O(n)$.
 	\caption{Left- and right BST rotations}
 	\label{fig:bst-rotations}
 \end{figure}
-...
-
-% TODO: prove the run-time
+Since all we are doing is to change a few pointers, the procedure takes
+constant time $\Theta(1)$.
 
 \section{Rebalancing}
 When we use a balanced implementation of binary search trees, such as
