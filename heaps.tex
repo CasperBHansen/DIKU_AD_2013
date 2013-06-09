@@ -161,7 +161,8 @@ the violating node travels only in a downward path.
 	
 	\Input{An array $A$}
 	\Output{In-place heapifying the array $A$.}
-	\Invariant{MISSING, RESERVED FOR FORMAL PROOF}
+	\Invariant{At the start of each iteration, each node $i+1, i+2, \dots, n$
+is the root of a max-heap.}
 	
 	\BlankLine
 	\BuildMaxHeap($A$) \\
@@ -174,28 +175,45 @@ the violating node travels only in a downward path.
 		}
 	}
 \end{algorithm}
-...
-\\\\
 \noindent \textbf{Initialization} \\
-...
+Prior to the first iteration of the loop, $i = \lfloor n/2 \rfloor$. Each node
+$\lfloor n/2 \rfloor + 1 \lfloor n/2 \rfloor + 2, \dots n$ is a leaf and is
+thus the root of a trivial max-heap.
 \\\\
 \noindent \textbf{Maintenance} \\
-...
+Both children of node $i$ are higher than $i$, by the loop invariant, they are
+then both roots of max-heaps. As we call \texttt{MaxHeapify} it correct any
+violations of the max-heap property of these. Hence we are building levels of
+the max-heap in a bottom-up fashion.
 \\\\
 \noindent \textbf{Termination} \\
-...
+At termination $i = 0$. By the loop invariant, each node $1, 2, \dots, n$ is
+the root of a max-heap - in particular, node $1$ is.
+\\\\
+The initialization part of the algorithm on lines 1-3 take constant time
+$\Theta(1)$, and since we call \texttt{MaxHeapify} $n/2$ times, we must have
+that \texttt{BuildMaxHeap} is upper-bounded by $O(n \lg n)$.
+
+We can tighten this bound by observing that \texttt{MaxHeapify} is dependent
+on the height $h = \lfloor \lg n \rfloor$, and has at most $\lceil n/2^{h+1}
+\rceil$ nodes.
+
+[... continue later, break...]
 
 \newpage
 
 \section{Procedures}
+\label{ch:heaps|sec:procedures}
 These are the procedures that are supported by max- or min-heaps.
 
 \subsection{Insertion}
+\label{ch:heaps|sec:procedures|sub:insertion}
 ...
 
 % TODO: pseudo-code, complexity
 
 \subsection{Extraction}
+\label{ch:heaps|sec:procedures|sub:extraction}
 When we want to extract an element out of a heap, because of its practical use
 we are typically interested only in the root node. Getting the root node is a
 trivial problem, we simply return the element at index zero - for a max-heap,
@@ -205,9 +223,46 @@ min-heap.
 % TODO: pseudo-code, complexity
 
 \subsection{Increase key}
+\label{ch:heaps|sec:procedures|sub:increase-key}
 ...
 
 % TODO: pseudo-code, complexity
 
 % TODO: prove that all procedures maintain the max- or min-heap property
+
+\section{Sorting}
+Given that the procedure for extraction, as defined in section
+\ref{ch:heaps|sec:procedures|sub:extraction}, one can easily imagine that
+building a max- or min-heap and emptying the priority queue by repeatedly
+calling the extraction procedure on it produces a sorted array.
+
+\begin{algorithm}[H]
+	\caption{Heapsort}
+	\label{alg:heapsort}
+	
+	\SetKwInOut{Input}{Input}
+	\SetKwInOut{Output}{Output}
+	
+	\SetKwFunction{HeapSort}{HeapSort}
+	\SetKwFunction{BuildMaxHeap}{BuildMaxHeap}
+	\SetKwFunction{MaxHeapify}{MaxHeapify}
+	
+	\SetKw{DownTo}{ down to }
+	
+	\Input{An unordered array $A$}
+	\Output{In-place sorting of the array $A$.}
+	
+	\BlankLine
+	\HeapSort($A$) \\
+	\Begin
+	{
+		\BuildMaxHeap($A$) \\
+		\For{$i = A.length \DownTo 2$}
+		{
+			Exchange $A[1]$ with $A[i]$ \\
+			$A.size = A.size - 1$ \\
+			\MaxHeapify($A$, 1)
+		}
+	}
+\end{algorithm}
 
