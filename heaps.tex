@@ -77,22 +77,19 @@ as a tree-structure, as shown in the following figure.
 \section{Priority Queues}
 \label{ch:heaps|sub:priorityqueues}
 A priority queue is an abstract data structure, which sorts and maintains a
-set of data in such a way, that the data is prioritized. It is an important
-distinction to make that a priority queue isn't a particular data structure,
-but rather a class of data structures. Data structures that work well with
-this notion include stacks, heaps, self-organizing lists, etc. We will focus
+set of data in such a way, that the data is prioritized.A priority queue is not a destinct structure but a
+class of data structures. Priority queues work well with stacks, heaps, self-organizing lists, etc. We will focus
 mainly on heaps.
-
-A heap, however, is not a priority queue in and of itself, it must adhere to
-a set of properties, and that is either the max- or min-heap properties.
+A heap is a priority queue and must adhere to the properties of either max or min-heap.
 \begin{description}
 	\item \textbf{Max-heap} The key of a node is greater than or equal to the
 keys of its children.
 	\item \textbf{Min-heap} The key of a node is less than or equal to the
 keys of its children.
 \end{description}
-As the max- and min heaps are defined by the procedures performed on them, we
-must show that the their property is maintained by each of these procedures.
+Max- and Min-Heaps are defined by their procedures, and we must show that their properties are maintained by those.
+
+\clearpage
 
 \begin{algorithm}[H]
 	\caption{Max-heapify}
