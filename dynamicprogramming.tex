@@ -76,7 +76,22 @@ solved all of its prerequisite subproblems.
 \newpage
 \section{Longest Common Subsequence}
 % p. 390-396, CLRS
-...
+In LCS we compare to strings (X and Y), to find the longest string containing letters represented in bothX and Y.
+we do this by comparing each element of X to each element of Y.
+We construct a datastructure resembling af tabel, and in this record every element that exists in both strings.
+
+%-------indsæt tabel billed eksempel ------%
+
+Furtermore we record the length of LCS so far, so we can later determine the optimal solution.
+
+This tabel is constructed by the algorithme 
+
+%-----------indsæt length-of-LCS algorithm --------%
+
+When this is done we can backtrack the tabel from the last to the first element, printing each element to provide the string.
+this is done by:
+
+%------indsæt print-LCS algoritmen -----%
 
 \section{Rod-cutting}
 Consider the rod-cutting problem; given a rod of length $n$ inches and a table
