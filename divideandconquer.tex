@@ -295,6 +295,7 @@ in the array is in one of the three sets described by the invariant, and the
 partition is then in three parts; those less than or equal to $x$, those
 greater than $x$ and a singleton set containing $x$.
 
+\newpage
 \subsection{Analysis}
 % p. 174-178, CLRS
 The algorithm depends heavily on the partition subprocedure, and its
@@ -323,4 +324,20 @@ We then have the recurrence
 By the master theorem (see section
 \ref{ch:divideandconquer|sub:recurrences|sub:master-theorem}), this gives us a
 running-time of $\Theta(n \lg n)$ --- which is just as fast as merge sort.
+\\\\
+\noindent \textbf{Average-case partitioning}
+As stated, the key to a good running-time of quick sort is that of the
+partitioning subprocedure. And as we examine the average, we will see that the
+average-case is much closer to the best-case than the worst-case.
+
+Suppose that the partitioning subprocedure always produces a 9-to-1
+proportional split --- which at first glance seems quite unbalanced ---, we
+get the following recurrence
+\begin{align}
+	T(n) &= T(9n/10) + T(n/10) + cn
+\end{align}
+If we visualize this as a recursion tree, we notice that the sum of each level
+costs $cn$. The two major branches of the tree bottoms out at $\lg_{10}n =
+\Theta{\lg n}$ and $\lg_{10/9}n = \Theta(\lg n)$, respectively. The total cost
+is therefore $O(n \lg n)$.
 
