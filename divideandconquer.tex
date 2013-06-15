@@ -291,4 +291,29 @@ returned to normal]
 
 \subsection{Analysis}
 % p. 174-178, CLRS
-...
+The algorithm depends heavily on the partition subprocedure, and its
+running-time is determined by the partition balance, which in turn depends on
+the elements --- the more balanced, the faster it runs.
+\\\\
+\noindent \textbf{Worst-case partitioning} \\
+The worst-case occurs when the partitioning subprocedure produces one
+subproblem of size $n - 1$, and one with $0$ elements. Assuming that this
+occurs on each recursive call, then the partitioning costs $\Theta(n)$. We
+then have the recurrence
+\begin{align}
+	T(n) &= T(n-1) + T(0) + \Theta(n) \\ &= T(n-1) + \Theta(n) \\ &= \Theta(n^2)
+\end{align}
+Note that $T(n-1)$ forms an arithmetic series (see appendix
+\ref{appendix:equations|eqn:arithmetic-series}), which evaluates to
+$\Theta(n^2)$ --- which is just as slow as insertion sort.
+\\\\
+\noindent \textbf{Best-case partitioning} \\
+The best-case occurs when the partition subprocedure splits the input in
+evenly --- that is, sizes $\lfloor n/2 \rfloor$ and $\lceil n/2 \rceil - 1$.
+We then have the recurrence
+\begin{align}
+	T(n) &= 2T(n/2) + \Theta(n)
+\end{align}
+By the master theorem (see section
+\ref{ch:divideandconquer|sub:recurrences|sub:master-theorem}), this gives us a
+running-time of $\Theta(n \lg n)$ --- which is just as fast as merge sort.
