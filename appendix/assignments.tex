@@ -17,7 +17,7 @@ invariants} (see appendix \ref{appendix:proofs|sec:loop-invariant}).
 \section{7-1 Hoare Partition}
 \label{appendix:assignments|ass:hoare-partition}
 This assignment focused on:
-\begin{itemize}
+\begin{enumerate}
 \item Showing how \textit{hoare-partition} runs on a dataset.
 \item Proving that the algorithm doesn't access any array indexes outside the 
 input array range.
@@ -25,7 +25,10 @@ input array range.
 \item Proving that the algoirithm actually partitions, by having all numbers in 
 the range $A[p..j]$ be less than or equal to the numbers in the range $A[j+1..r]$ 
 at termination.
-\end{itemize}
+\item Modifying the \textit{quicksort} algorithm to use \textit{hoare-partition} 
+instead of the regular \textit{partition}, by including the pivot element in one 
+of the recursive calls that quicksort makes
+\end{enumerate}
 
 \section{15-2 Longest Palindromic Subsequence}
 \label{appendix:assignments|ass:longest-palindromic-subsequence}
