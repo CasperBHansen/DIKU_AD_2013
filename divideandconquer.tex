@@ -284,10 +284,16 @@ satisfied. The assignment on line 3 satisfies condition 3. \\
 \noindent \textbf{Maintenance} Two cases must be accounted for here because of
 the \texttt{if}-statement on line 6; when $A[j] > x$, $j$ is incremented,
 which then satisfies condition 2 for $A[j - 1]$, everything else remains
-unchanged, thus satisfying conditions 1 and 3. [continue when blood sugar has
-returned to normal]
+unchanged, thus satisfying conditions 1 and 3. When $A[j] \leq x$, then $i$ is
+incremented and swap $A[i]$ and $A[j]$, and lastly increments $j$. Because of
+the swap, we now have that $A[i] \leq q$, satisfying condition 1. Similarly,
+we also have that $A[j - 1] > x$, since the item that was swapped into
+$A[j - 1]$ is, by the loop invariant, greater than $x$.
 \\\\
-\noindent \textbf{Termination} ...
+\noindent \textbf{Termination} At termination, $j = r$. Therefore, every entry
+in the array is in one of the three sets described by the invariant, and the
+partition is then in three parts; those less than or equal to $x$, those
+greater than $x$ and a singleton set containing $x$.
 
 \subsection{Analysis}
 % p. 174-178, CLRS
@@ -317,3 +323,4 @@ We then have the recurrence
 By the master theorem (see section
 \ref{ch:divideandconquer|sub:recurrences|sub:master-theorem}), this gives us a
 running-time of $\Theta(n \lg n)$ --- which is just as fast as merge sort.
+
