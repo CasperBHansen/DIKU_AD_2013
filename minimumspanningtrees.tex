@@ -124,7 +124,7 @@ minimum spanning tree of $G$.
 		Sort the edges of $G.E$ into nondecreasing order by weight $w$ \\
 		
 		% maintenance
-		\For{each edge $(u, v) \in G.E$, taken in order.}
+		\For{\textnormal{each edge } $(u, v) \in G.E$}
 		{
 			\If{\FindSet$(u)$ $\neq$ \FindSet$(v)$}
 			{
@@ -133,8 +133,28 @@ minimum spanning tree of $G$.
 			}
 		}
 	}
-\end{algorithm}
+\end{algorithm}{\ }\\\\
+In the above algorithm, we have assumed access to a number of utility
+functions. These are explained below, and their complexity reasoned.
+\begin{description}
+	\item \texttt{MakeSet} ...
+	\item \texttt{FindSet} ...
+	\item \texttt{Union} ...
+\end{description}
 
+\subsection{Analysis}
+The running-time of \ref{alg:kruskal-mst} depends on the implementation of
+the disjoint-set data structure. Assuming the use of the fastest
+implementation known (disjoint-set-forest, see section
+21.3\cite[p. 568]{clrs}), the running-time is as follows.
+
+The initialization occurs on lines 3--7. Line 3 takes constant time
+$\Theta(1)$, lines 4--6 performs $|V|$ \texttt{MakeSet} operations. We can
+sort the edges $G.E$ in $O(E \lg E)$-time.
+
+The loop on lines 8--13 performs $O(E)$ \texttt{FindSet}- and \texttt{Union}
+operations giving us grand a total of $O((V+E) \alpha(V))$, where $\alpha$
+is a slowly growing function (see section 21.4\cite[p. 573]{clrs}).
 
 \newpage
 \section{Prim's Algorithm}
