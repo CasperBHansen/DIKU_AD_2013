@@ -6,7 +6,7 @@
 \textbf{Pensum} 23 \cite{clrs} \\\\
 \textbf{Assignments} 13-3 \\\\
 \textbf{Algorithms} Kruskal's, Prim's\\\\
-\textbf{Keywords} Greedy, optimal substructure, representation invariant,
+\textbf{Keywords} Greedy, optimal substructure, light edges,
 binary- and fibonacci-heap
 \vspace{1in}
 
@@ -23,6 +23,19 @@ The total weight of a graph $T$ is given by the sum of all of its edge weights.
 The term \textit{spanning} refers to the fact that the tree $T$ spans the
 entire set of vertices $V$, and the term \textit{minimum} refers to that the
 tree $T$ is of minimum weight.
+\section{Definitions}
+These are the definitions specific to the minimum spanning tree problem.
+\begin{description}
+	\item A \textbf{cut} $(S, V-S)$ of an undirected graph $G = (V, E)$ is a
+partition of $V$.
+	\item A \textbf{crossing} is an edge $(u, v) \in E$ that \textit{crosses}
+the cut $(S, V - S)$ --- that is, the edges end-points are in $S$ and $S - V$,
+respectively.
+	\item An cut \textbf{respects} a set $A$ of edges if no edges in $A$
+crosses the cut.
+	\item A \textbf{light edge} is an edge that crosses a cut and is of
+minimum weight (see theorem 23.1\cite[p. 626]{clrs}).
+\end{description}
 
 \section{Optimal Substructure}
 ...
