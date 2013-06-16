@@ -108,17 +108,14 @@ pointer manipulations of the immediate nodes.
 Since all we are doing is to change a few pointers, the procedure takes
 constant time $\Theta(1)$.
 
-\section{Rebalancing}
-When we use a balanced implementation of binary search trees, such as
-\textit{red-black}- or \textit{AVL}-trees, we must maintain certain
-properties, which are typically accounted for after applying an alteration on
-the tree - this is called \textit{rebalancing} - whenever a tree gets
-unbalanced, as the result of an operation performed on it, we say that the
-tree is \textit{left- or right heavy}.
+% \section{Rebalancing}
+% When we use a balanced implementation of binary search trees, such as
+% \textit{red-black}- or \textit{AVL}-trees, we must maintain certain
+% properties, which are typically accounted for after applying an alteration on
+% the tree - this is called \textit{rebalancing} - whenever a tree gets
+% unbalanced, as the result of an operation performed on it, we say that the
+% tree is \textit{left- or right heavy}.
 
-% TODO: write up cases for unbalanced trees, and how to fix them up.
-
-\newpage
 \section{Red-Black Binary Search Tree}
 A red-black BST is a implementation of balanced binary search trees, and it
 works by figuratively coloring each node in the tree one of two colors; red or
@@ -143,7 +140,6 @@ nodes on any simple path from, but not including, a node $x$ down to a leaf
 define the black height of a red-black tree to be the black height of its
 root.
 
-\newpage
 \subsection{Analysis}
 We claim that red-black trees are balanced and thus guarantees a running-time
 of $O(\lg n$. This follows from lemma 13.1\cite[p. 309]{clrs}, which states
