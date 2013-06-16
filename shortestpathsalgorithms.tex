@@ -35,76 +35,32 @@ A \textit{shortest path} $p$ from $v$ to $u$ is defined as $w(p) =
 % NOTE: maybe proofs of lemmas is going a little over the top? Some are very long.
 We give the properties of shortest paths.
 
-\subsection{The Triangle Inequality}
+\begin{description}
+	\item \textbf{The Triangle Inequality} \cite[p.~671, thm. 24.10]{clrs} \\
 For any edge $(u, v) \in E$, we have $\delta(s, v) \leq \delta(s, u) +
 w(u, v)$ - meaning that a shortest path fulfills the triangle inequality (see
 appendix \ref{appendix:equations|eqn:triangle-inequality}).
-\begin{lemma}
-	\textbf{Triangle inequality property} \\
-	...
-\end{lemma}
 
-\begin{proof} \textnormal{\cite[p.~671, thm. 24.10]{clrs}} \\
-	...
-\end{proof}
-
-\subsection{Upper-bound}
+	\item \textbf{Upper-bound} \cite[p.~671-672, thm. 24.11]{clrs} \\
 We always have $v.d \geq \delta(s, v)$ for all vertices $v \in V$, and once
 $v.d = \delta(s, v)$, it never changes.
-\begin{lemma}
-	\textbf{Upper-bound property} \\
-	...
-\end{lemma}
 
-\begin{proof} \textnormal{\cite[p.~671-672, thm. 24.11]{clrs}} \\
-	...
-\end{proof}
-
-\subsection{No-path}
+	\item \textbf{No-path} \cite[p.~672, thm. 24.12]{clrs} \\
 If there is no path from $s$ to $v$, then we always have $v.d = \delta(s, v) =
 \infty$.
-\begin{corollary}
-	\textbf{No-path property} \\
-	...
-\end{corollary}
 
-\begin{proof} \textnormal{\cite[p.~672, thm. 24.12]{clrs}} \\
-	...
-\end{proof}
-
-\subsection{Convergence}
+	\item \textbf{Convergence} \cite[p.~672-673, thm. 24.14]{clrs} \\
 ...
-\begin{lemma}
-	\textbf{Convergence property} \\
-	...
-\end{lemma}
-
-\begin{proof} \textnormal{\cite[p.~672-673, thm. 24.14]{clrs}} \\
-	...
-\end{proof}
-
-\subsection{Path-relaxation}
-...
-\begin{lemma}
-	\textbf{Path-relaxation property} \\
-	...
-\end{lemma}
-
-\begin{proof} \textnormal{\cite[p.~673, thm. 24.15]{clrs}} \\
-	...
-\end{proof}
-
-\subsection{Predecessor-subgraph}
+	\item \textbf{Path-relaxation} \cite[p.~673, thm. 24.15]{clrs} \\
+If $p = \langle v_0, v_1, \dots, v_k \rangle$ is a shortest path from
+$s = v_0$ to $v_k$, and we relax the edge of $p$ in order $(v_0, v_1),
+(v_1, v_2), \dots, (v_{k-1}, v_k)$, then $v_k.d = \delta(s, v_k)$. This
+property holds regardless of any other relaxation steps that occur, even if
+they are intermixed with relaxations of the edges of $p$.
+	\item \textbf{Predecessor-subgraph} \cite[p.~676, thm. 24.17]{clrs} \\
 Once $v.d = \delta(s, v)$ for all $v \in V$, the predecessor subgraph is a
 shortest-paths tree rooted at $s$.
-\begin{lemma}
-	\textbf{Predecessor-subgraph property} \\
-	...
-\end{lemma}
-
-\begin{proof} \textnormal{\cite[p.~676, thm. 24.17]{clrs}} \\
-	...
-\end{proof}
+\end{description}
 
 \newpage
 \section{Optimal Substructure}
