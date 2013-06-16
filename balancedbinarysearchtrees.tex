@@ -137,5 +137,71 @@ These are the properties of red-back binary search trees.
 	\item All simple paths from a node to descendants leaves contain the same
 number of black nodes.
 \end{enumerate}
+For red-black trees we define the \textit{black height} as the number of black
+nodes on any simple path from, but not including, a node $x$ down to a leaf
+--- we denote this as $\textnormal{bh}(x)$. This follows from property 5. We
+define the black height of a red-black tree to be the black height of its
+root.
 
+\newpage
+\subsection{Analysis}
+We claim that red-black trees are balanced and thus guarantees a running-time
+of $O(\lg n$. This follows from lemma 13.1\cite[p. 309]{clrs}, which states
+\\\\
+\noindent \textbf{Claim}
+A red-black tree with $n$ internal nodes has height at most $2\lg(n+1)$.
+
+\begin{lemma} {\ }\\
+	Let $s(x)$ denote the number of internal nodes in a subtree rooted at any
+	node $x$, then
+	\begin{align}
+		s(x) \geq 2^{\textnormal{bh}(x)} - 1
+	\end{align}
+\end{lemma}
+
+\begin{proof}[Proof of claim]
+	\begin{align}
+		n = s(r) \geq 2^{\textnormal{bh}(r)} - 1 \geq 2^{h/2} - 1
+	\end{align}
+	By property 4 it follows that at least half of the nodes on any simple
+	path from the root to a leaf, excluding the root, must be a black.
+	\begin{align}
+		n + 1 \geq 2^{h/2} \Leftrightarrow
+		\lg(n+1) \geq \frac{h}{2} \Leftrightarrow
+		2 \lg(n+1) \geq h
+	\end{align}
+\end{proof}
+
+\begin{proof}[Proof of lemma] {\ } \\\\
+	\textbf{Base case} \\
+	Valid when $x$ has height $0$; $x$ is an external leaf, and $s(x) = 0$,
+	thereby $\textnormal{bh}(x) = 0$ and $2^{\textnormal{bh}(x)}-1 = 0$, so
+	the inequality holds.
+	\\\\
+	\textbf{Inductive step} \\
+	Assume that the inequality holds for all nodes of height less than $k$ and
+	let $x$ be a node with $\textnormal{h}(x) = k$, and let
+	$\textnormal{L}(y)$ and $\textnormal{R}(y)$ denote the left and right
+	subtrees of a node $y$, respectively.
+	
+	\begin{align}
+		\textnormal{h}(L(x)) \leq k-1
+		\quad \text{and} \quad
+		\textnormal{h}(R(x)) \leq k-1
+	\end{align}
+	$\therefore$ lemma is valid for $\textnormal{L}(x)$ and $\textnormal{R}(x)$.
+	
+	\begin{align}
+		s(x) &= s(\textnormal{L}(x)) + s(\textnormal{R}(x)) + 1 \\
+		&\geq 2^{\textnormal{bh}(\textnormal{L}(x))}-1
+		+ 2^{\textnormal{bh}(\textnormal{R}(x))}-1 + 1 \\
+		&= 2^{\textnormal{bh}(x-1)}-1 + 2^{\textnormal{bh}(x-1)}-1 + 1 \\
+		&= 2^{\textnormal{bh}(x-1)} + 2^{\textnormal{bh}(x-1)}-1 \\
+		&= 2^{\textnormal{bh}(x)}-1
+	\end{align}
+	Hence, the height falls by at most 1.
+\end{proof}
+The immediate consequence of this, is that the common operations on binary
+search trees runs in $O(\lg n)$ with a red-black balanced implementation of
+the operations that alter the tree, such as insertion and deletion.
 
