@@ -44,17 +44,17 @@ as a tree-structure, as shown in the following figure.
 	]
 		% level 1
 		\node (n1) at 	(3.5, -1) {16};
-		
+
 		% level 2
 		\node (n2) at 	(1.5, -2) {14};
 		\node (n3) at 	(5.5, -2) {10};
-		
+
 		% level 3
 		\node (n4) at 	(0.5, -3) {8};
 		\node (n5) at 	(2.5, -3) {7};
 		\node (n6) at 	(4.5, -3) {9};
 		\node (n7) at 	(6.5, -3) {3};
-		
+
 		% level 4
 		\node (n8) at 	(0, -4) {2};
 		\node (n9) at 	(1, -4) {4};
@@ -64,7 +64,7 @@ as a tree-structure, as shown in the following figure.
 		% \node (n13) at 	(5, -4) {13};
 		% \node (n14) at 	(6, -4) {14};
 		% \node (n15) at 	(7, -4) {15};
-		
+
 		% drawing code
 		\foreach \from/\to in {n1/n2,n1/n3} \draw (\from) -- (\to);
 		\foreach \from/\to in {n2/n4,n2/n5,n3/n6,n3/n7} \draw (\from) -- (\to);
@@ -94,17 +94,17 @@ Max- and Min-Heaps are defined by their procedures, and we must show that their 
 \begin{algorithm}[H]
 	\caption{Max-heapify}
 	\label{alg:max-heapify}
-	
+
 	\SetKwInOut{Input}{Input}
 	\SetKwInOut{Output}{Output}
-	
+
 	\SetKwFunction{MaxHeapify}{MaxHeapify}
 	\SetKwFunction{Left}{Left}
 	\SetKwFunction{Right}{Right}
-	
+
 	\Input{An array $A$ and index $i$}
 	\Output{In-place swapping max-heap property violations of $A$.}
-	
+
 	\BlankLine
 	\MaxHeapify($A$, $i$) \\
 	\Begin
@@ -118,7 +118,7 @@ Max- and Min-Heaps are defined by their procedures, and we must show that their 
 		}
 		\If{$r \leq A.size $ \textnormal{and} $A[r] > A[largest]$}
 		{
-			$largest = l$ \\
+			$largest = r$ \\
 		}
 		\If{$largest \neq i$}
 		{
@@ -140,21 +140,21 @@ at most, correct a \textit{simple path} of the tree.
 \begin{algorithm}[H]
 	\caption{Build max-heap}
 	\label{alg:build-max-heap}
-	
+
 	\SetKwInOut{Input}{Input}
 	\SetKwInOut{Output}{Output}
 	\SetKwInOut{Invariant}{Invariant}
-	
+
 	\SetKwFunction{BuildMaxHeap}{BuildMaxHeap}
 	\SetKwFunction{MaxHeapify}{MaxHeapify}
-	
+
 	\SetKw{DownTo}{ down to }
-	
+
 	\Input{An array $A$}
 	\Output{In-place heapifying the array $A$.}
 	\Invariant{At the start of each iteration, each node $i+1, i+2, \dots, n$
 is the root of a max-heap.}
-	
+
 	\BlankLine
 	\BuildMaxHeap($A$) \\
 	\Begin
@@ -223,18 +223,18 @@ at index zero. \\
 \begin{algorithm}[H]
 	\caption{Extract max}
 	\label{alg:heap-extract-max}
-	
+
 	\SetKwInOut{Input}{Input}
 	\SetKwInOut{Output}{Output}
-	
+
 	\SetKw{Error}{error}
-	
+
 	\SetKwFunction{ExtractMax}{ExtractMax}
 	\SetKwFunction{MaxHeapify}{MaxHeapify}
-	
+
 	\Input{A heap $A$.}
 	\Output{Returns the maximum of a heap, removing it from the heap.}
-	
+
 	\BlankLine
 	\ExtractMax($A$) \\
 	\Begin
@@ -257,19 +257,19 @@ Increasing the priority of an entry is done using the following procedure. \\
 \begin{algorithm}[H]
 	\caption{Increase key}
 	\label{alg:heap-increase-key}
-	
+
 	\SetKwInOut{Input}{Input}
 	\SetKwInOut{Output}{Output}
-	
+
 	\SetKw{Error}{error}
 	\SetKw{And}{ and }
-	
+
 	\SetKwFunction{IncreaseKey}{IncreaseKey}
 	\SetKwFunction{Parent}{Parent}
-	
+
 	\Input{A heap $A$, an index $i$ and a key $k$.}
 	\Output{Increases the key of index $i$ into the heap $A$ to the key $k$.}
-	
+
 	\BlankLine
 	\IncreaseKey($A$, $i$, $k$) \\
 	\Begin
@@ -293,16 +293,16 @@ Inserting a key into a heap is done using the following procedure. \\
 \begin{algorithm}[H]
 	\caption{Heap insertion}
 	\label{alg:heap-insert}
-	
+
 	\SetKwInOut{Input}{Input}
 	\SetKwInOut{Output}{Output}
-	
+
 	\SetKwFunction{Insert}{Insert}
 	\SetKwFunction{IncreaseKey}{IncreaseKey}
-	
+
 	\Input{A heap $A$ and a key $k$.}
 	\Output{Inserts the key $k$ into the heap $A$.}
-	
+
 	\BlankLine
 	\Insert($A$, $k$) \\
 	\Begin
@@ -325,19 +325,19 @@ calling the extraction procedure on it produces a sorted array.
 \begin{algorithm}[H]
 	\caption{Heapsort}
 	\label{alg:heapsort}
-	
+
 	\SetKwInOut{Input}{Input}
 	\SetKwInOut{Output}{Output}
-	
+
 	\SetKwFunction{HeapSort}{HeapSort}
 	\SetKwFunction{BuildMaxHeap}{BuildMaxHeap}
 	\SetKwFunction{MaxHeapify}{MaxHeapify}
-	
+
 	\SetKw{DownTo}{ down to }
-	
+
 	\Input{An unordered array $A$}
 	\Output{In-place sorting of the array $A$.}
-	
+
 	\BlankLine
 	\HeapSort($A$) \\
 	\Begin
