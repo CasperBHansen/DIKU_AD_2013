@@ -82,9 +82,46 @@ minimum spanning tree of $G$.
 \newpage
 \section{Kruskal's Algorithm}
 % p. 631
-...
+... \\
+\begin{algorithm}[H]
+	\caption{Kruskal's algorithm}
+	\label{alg:kruskal-mst}
+	
+	\SetKwInOut{Input}{Input}
+	\SetKwInOut{Output}{Output}
+	
+	\SetKwFunction{KruskalMST}{KruskalMST}
+	\SetKwFunction{MakeSet}{MakeSet}
+	\SetKwFunction{FindSet}{FindSet}
+	\SetKwFunction{Union}{Union}
+	
+	\Input{A graph $G$ and a weight function $w$.}
+	\Output{...}
+	
+	\BlankLine
+	\KruskalMST($G$, $w$) \\
+	\Begin
+	{
+		% initialization O(V)
+		$A = \emptyset$ \\
+		\For{\textnormal{each vertex } $v \in G.V$}
+		{
+			\MakeSet($v$)
+		}
+		Sort the edges of $G.E$ into nondecreasing order by weight $w$ \\
+		
+		% maintenance
+		\For{each edge $(u, v) \in G.E$, taken in order.}
+		{
+			\If{\FindSet$(u)$ $\neq$ \FindSet$(v)$}
+			{
+				$A = A \cup \{(u, v)\}$ \\
+				\Union($u$, $v$)
+			}
+		}
+	}
+\end{algorithm}
 
-% TODO: pseudo-code
 
 \newpage
 \section{Prim's Algorithm}
