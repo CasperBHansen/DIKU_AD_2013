@@ -46,17 +46,66 @@ optimal solution to the original problem.
 
 \subsection{Proving The Greedy Choice}
 % p. 424, CLRS
-As the greedy choice is not always the optimal choice, you will have to prove the choice for each algorithme.
-The proof examines
-a globally optimal solution to some subproblem. It then shows how to modify
-the solution to substitute the greedy choice for some other choice, resulting in one
-similar, but smaller, subproblem.
+As the greedy choice is not always the optimal choice, you will have to prove
+the choice for each algorithme. The proof examines a globally optimal solution
+to some subproblem. It then shows how to modify the solution to substitute the
+greedy choice for some other choice, resulting in one similar, but smaller,
+subproblem.
 
 \subsection{Demonstrating Optimal Substructure}
 % p. ?-?, CLRS
 ...
 
-\section{Huffman}
+\clearpage
+\section{Huffman Codes}
 % p. 428-435, CLRS
-...
+The Huffman code algorithm compresses data by constructing a tree-structure
+from the data by means of the frequency of occurrences within the data.
+\\\\
+\begin{algorithm}[H]
+	\SetKwInOut{In}{Input}
+	\SetKwInOut{Out}{Output}
+	
+	\SetKwFunction{HuffmanCode}{HuffmanCode}
+	\SetKwFunction{ExtractMin}{ExtractMin}
+	\SetKwFunction{Insert}{Insert}
+	
+	\In{A data set $C$, each node within it has an attribute $freq$.}
+	\Out{The root node of the tree-structure built.}
+	\BlankLine
+	
+	\HuffmanCode($C$) \\
+	\Begin
+	{
+		$n = |C|$ \\
+		$Q = C$ \\
+		\For{$i = 1$ \KwTo $n - 1$}
+		{
+			allocate a new node $z$ \\
+			$z.left = x = $ \ExtractMin($Q$) \\
+			$z.right = y = $ \ExtractMin($Q$) \\
+			$z.freq = z = x.freq + y.freq$ \\
+			\Insert($Q$, $z$)
+		}
+		\Return \ExtractMin($Q$)
+	}
+\end{algorithm}
+
+\subsection{Analysis}
+During the initialization it sets $n$ to the cardinality of the set $C$ on
+line 3, and builds a min-heap priority queue from the set $C$, keyed on the
+frequency of the nodes, on line 4. The latter taking the majority of the
+running-time of the initialization at $O(n)$ (see algorithm
+\ref{alg:build-max-heap} on page ~\ref{alg:build-max-heap}).
+
+The loop in lines 5--11 runs exactly $n-1$ times, executing heap operations
+that take $O(\lg n)$ each, and so it contributes a total of $O(n \lg n)$.
+
+% \subsection{Proof}
+% We must first show that the problem exhibits optimal substructure, and that
+% the greedy choice is always right. First we show that the greedy choice holds.
+
+% \begin{lemma}
+	
+% \end{lemma}
 
