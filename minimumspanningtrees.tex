@@ -5,7 +5,7 @@
 
 \textbf{Pensum} 23 \cite{clrs} \\\\
 \textbf{Assignments} 13-3 \\\\
-\textbf{Algorithms} Kruskal's, Prim's\\\\
+\textbf{Algorithms} Kruskal's algorithm, Prim's algorithm \\\\
 \textbf{Keywords} Greedy, optimal substructure, light edges,
 binary- and fibonacci-heap
 \vspace{1in}
@@ -137,11 +137,14 @@ minimum spanning tree of $G$.
 In the above algorithm, we have assumed access to a number of utility
 functions. These are explained below, and their complexity reasoned.
 \begin{description}
-	\item \texttt{MakeSet} ...
-	\item \texttt{FindSet} ...
-	\item \texttt{Union} ...
+	\item \texttt{MakeSet} creates a new set whose only member (and thus
+representative) is $x$ --- takes $\Theta(1)$-time.
+	\item \texttt{FindSet} returns a pointer to the representative of the
+(unique) set containing $x$ --- takes $\Theta(1)$-time.
+	\item \texttt{Union} ... --- takes ?.
 \end{description}
 
+\newpage
 \subsection{Analysis}
 The running-time of \ref{alg:kruskal-mst} depends on the implementation of
 the disjoint-set data structure. Assuming the use of the fastest
@@ -210,3 +213,6 @@ If we relate it to algorithm \ref{alg:generic-mst} we see that for Prim's
 algorithm the exit condition of forming a spanning tree takes the form of
 emptying a priority queue.
 
+\newpage
+\subsection{Analysis}
+...
