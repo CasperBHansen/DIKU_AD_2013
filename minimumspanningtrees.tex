@@ -135,13 +135,14 @@ minimum spanning tree of $G$.
 	}
 \end{algorithm}{\ }\\\\
 In the above algorithm, we have assumed access to a number of utility
-functions. These are explained below, and their complexity reasoned.
+functions. These are explained below, and their complexity given.
 \begin{description}
 	\item \texttt{MakeSet} creates a new set whose only member (and thus
 representative) is $x$ --- takes $\Theta(1)$-time.
 	\item \texttt{FindSet} returns a pointer to the representative of the
 (unique) set containing $x$ --- takes $\Theta(1)$-time.
-	\item \texttt{Union} ... --- takes ?.
+	\item \texttt{Union} creates the union set of the two passed sets ---
+takes $\Theta(1)$-time.
 \end{description}
 
 \newpage
