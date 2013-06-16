@@ -119,5 +119,23 @@ tree is \textit{left- or right heavy}.
 % TODO: write up cases for unbalanced trees, and how to fix them up.
 
 \newpage
-\section{Red/Black Binary Search Tree}
-...
+\section{Red-Black Binary Search Tree}
+A red-black BST is a implementation of balanced binary search trees, and it
+works by figuratively coloring each node in the tree one of two colors; red or
+black. By the use of constraints on these colorings, and taking action
+whenever we have a violation of the constraints, we can ensure that the tree
+remains balanced --- hence also a minimum tree height, which in turn, also
+gives us good performance.
+
+\subsection{Properties}
+These are the properties of red-back binary search trees.
+\begin{enumerate}
+	\item Every node is either red or black.
+	\item The root is black.
+	\item All leaves (\texttt{NIL}) are black.
+	\item Both children of red nodes are black.
+	\item All simple paths from a node to descendants leaves contain the same
+number of black nodes.
+\end{enumerate}
+
+
