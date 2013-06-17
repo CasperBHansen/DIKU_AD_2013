@@ -76,23 +76,115 @@ solved all of its prerequisite subproblems.
 \newpage
 \section{Longest Common Subsequence}
 % p. 390-396, CLRS
-In LCS we compare to strings (X and Y), to find the longest string containing letters represented in bothX and Y.
-we do this by comparing each element of X to each element of Y.
-We construct a datastructure resembling af tabel, and in this record every element that exists in both strings.
+In the longest common subsequence problem we are given two sequences $X =
+\langle x_1, x_2, \dots, x_m \rangle$ and $Y = \langle y_1, y_2, \dots, y_n
+\rangle$, and we wish to find a subsequence of both $X$ and $Y$ of maximum
+length.
 
-%-------indsæt tabel billed eksempel ------%
+\subsection{Optimal Substructure}
+The brute-force approach would require exponential time, since the number of
+subsequences of $X$ is $2^m$, making it impractical for large inputs.
 
-Furtermore we record the length of LCS so far, so we can later determine the optimal solution.
+The LCS-problem exhibits the optimal substructure property, however, which is
+shown in the following theorem. First, we define the \textit{i}th prefix by
+$Z_i = \langle z_1, z_2, \dots, z_i \rangle$, and $Z_0$ is the empty sequence.
 
-This tabel is constructed by the algorithme 
+\begin{theorem} \cite[thm. 15.1, p. 392]{clrs} \\
+\label{thm:lcs-optimal-substructure}
+	Let $X = \langle x_1, x_2, \dots, x_m \rangle$
+	and $Y = \langle y_1, y_2, \dots, y_n \rangle$
+	be sequences, and let $Z = \langle z_1, z_2, \dots, z_k \rangle$ be any
+	LCS of $X$ and $Y$.
+	\textnormal
+	{
+	\begin{enumerate}
+		\item If $x_m = y_m$, then $z_k = x_m = y_n$ and $Z_{k-1}$ is an
+LCS of $X_{m-1}$ and $Y_{n-1}$.
+		\item If $x_m \neq y_n$, then $z_k \neq x_m$ implies that $Z$ is an
+LCS of $X_{m-1}$ and $Y$.
+		\item If $x_m \neq y_n$, then $z_k \neq y_n$ implies that $Z$ is an
+LCS of $X$ and $Y_{n-1}$.
+	\end{enumerate}
+	}
+\end{theorem}
 
-%-----------indsæt length-of-LCS algorithm --------%
+% proof ?
 
-When this is done we can backtrack the tabel from the last to the first element, printing each element to provide the string.
-this is done by:
+\subsection{Overlapping subproblems}
+Theorem \ref{thm:lcs-optimal-substructure} gives us two recursive cases; one
+of which leaves us one subproblem, and the other two subproblems, which shows
+that the  LCS problem has overlapping subproblems.
 
-%------indsæt print-LCS algoritmen -----%
+We define value (length of the subsequence) of the recursive cases by the
+table entry $c[i,j]$. This gives us a way to express the recursion.
 
+\begin{align}
+	c[i,j] =
+	\begin{cases}
+		0 & \mbox{if $i = 0$ or $j = 0$} \\
+		c[i - 1, j - 1] + 1 & \mbox{if $i, j > 0$ and $x_i = y_j$} \\
+		max(c[i, j-1], c[i-1, j]) & \mbox{if $i, j > 0$ and $x_i \neq y_j$}
+	\end{cases}
+\end{align}
+
+\newpage
+\subsection{Bottom-up solution}
+...
+\\\\
+\begin{algorithm}[H]
+	\caption{Longest common subsequence, bottom-up.}
+	\label{alg:lcs-bottom-up}
+	
+	\SetKwInOut{In}{Input}
+	\SetKwInOut{Out}{Output}
+	
+	\SetKwFunction{LCS}{LCS}
+	
+	\In{Takes two sequences $X$ and $Y$.}
+	\Out{A longest common subsequence of $X$ and $Y$.}
+	
+	\BlankLine
+	\LCS($X$, $Y$) \\
+	\Begin
+	{
+		% initialization
+		$m = X.length$ \\
+		$n = Y.length$ \\
+		Let $c[0 \dots m, 0 \dots n]$ be a new table \\
+		\For{$i = 1$ \KwTo $m$}
+		{
+			$c[i, 0] = 0$
+		}
+		\For{$j = 1$ \KwTo $n$}
+		{
+			$c[0, i] = 0$
+		}
+		\For{$i = 1$ \KwTo $m$}
+		{
+			\For{$j = 1$ \KwTo $n$}
+			{
+				\uIf{$x_i == y_i$}
+				{
+					$c[i, j] = c[i-1,j-1] + 1]$ \\
+					$b[i, j] ={\ }\nwarrow$
+				}
+				\uElseIf{$c[i-1, j] \geq c[i, j-1]$}
+				{
+					$c[i, j] = c[i-1, j]$ \\
+					$b[i, j] ={\ }\uparrow$
+				}
+				\Else
+				{
+					$c[i, j] = c[i, j-1]$ \\
+					$b[i, j] ={\ }\leftarrow$
+				}
+			}
+		}
+		\Return $b$ and $c$
+	}
+\end{algorithm}
+
+\newpage % NOTE: obsolete when LCS has been added
 \section{Rod-cutting}
 Consider the rod-cutting problem; given a rod of length $n$ inches and a table
 of prices $p_i$, for $i = 1, 2, \dots, n$, determine the maximum revenue $r_n$
