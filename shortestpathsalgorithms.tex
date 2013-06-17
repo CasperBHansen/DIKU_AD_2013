@@ -62,7 +62,6 @@ Once $v.d = \delta(s, v)$ for all $v \in V$, the predecessor subgraph is a
 shortest-paths tree rooted at $s$.
 \end{description}
 
-\newpage
 \section{Optimal Substructure}
 Shortest paths algorithms typically rely on the property that a shortest path
 between two vertices contains other shortest paths within it. This is one of
@@ -79,6 +78,7 @@ the key indicators of \textit{dynamic programming} (see chapter
 	...
 \end{proof}
 
+\newpage
 \section{Single-source Shortest Path}
 % ch. 24, CLRS
 Given a graph $G = (V, E)$, we want to find a shortest path from a given
@@ -98,6 +98,68 @@ as the best single-source algorithms. % TODO: Elaborate on why, prove it maybe!
 pair of vertices $u$ and $v$. This is essentially the single-source problem,
 but for all vertices in the set as the source.
 \end{description}
+
+\subsection{Subprocedures}
+We will make use of a number of subprocedures in the following algorithms.
+\begin{minipage}[t]{0.45\linewidth}
+	\begin{algorithm}[H]
+		\caption{Init Single-source}
+		\label{alg:init-single-source}
+		
+		\SetKwInOut{In}{Input}
+		\SetKwInOut{Out}{Output}
+		\SetKwInOut{Time}{Complexity}
+		\SetKw{Nil}{NIL}
+		
+		\SetKwFunction{InitSingleSource}{InitSingleSource}
+		
+%		\In{A graph $G$ and a source vertex $s$.}
+%		\Out{Initializes the nodes attributes of the graph $G$.}
+		\Time{$\Theta(V)$-time.}
+		
+		\BlankLine
+		\InitSingleSource($G$, $s$) \\
+		\Begin
+		{
+			\For{\textnormal{each vertex } $v \in G.V$}
+			{
+				$v.d = \infty$ \\
+				$v.\pi = $ \Nil
+			}
+			$s.d = 0$
+		}
+	\end{algorithm}
+\end{minipage}
+\hspace{0.5cm}
+\begin{minipage}[t]{0.45\linewidth}
+	\begin{algorithm}[H]
+		\caption{Relax edge}
+		\label{alg:relax}
+		
+		\SetKwInOut{In}{Input}
+		\SetKwInOut{Out}{Output}
+		\SetKwInOut{Time}{Complexity}
+		
+		\SetKw{Nil}{NIL}
+		
+		\SetKwFunction{Relax}{Relax}
+		
+%		\In{Vertices $u$ and $v$, and weight function $w$.}
+%		\Out{Relaxes the path to $v$, if going through $u$ is shorter.}
+		\Time{$\Theta(1)$-time.}
+		
+		\BlankLine
+		\Relax($u$, $v$, $w$) \\
+		\Begin
+		{
+			\If{$u.d + w(u, v) < v.d$}
+			{
+				$v.d = u.d + w(u, v)$ \\
+				$v.\pi = u$
+			}
+		}
+	\end{algorithm}
+\end{minipage}
 
 \newpage
 \section{Bellman-Ford Algorithm}
@@ -146,8 +208,9 @@ but for all vertices in the set as the source.
 \newpage
 \section{Dijkstra's Algorithm}
 % p. 658, CLRS
-... \\
-\begin{algorithm}
+The algorithm ...
+\\\\
+\begin{algorithm}[H]
 	\caption{Dijkstra's algorithm}
 	\label{alg:dijkstra}
 	
