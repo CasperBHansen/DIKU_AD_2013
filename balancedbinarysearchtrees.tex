@@ -39,11 +39,10 @@ The minimum and maximum procedures are simply search queries that looks only
 to the left or right, in the cases of minimum and maximum, respectively. As
 such, their running-time is the same as that of searching, $O(h)$.
 
-% \subsection{Predecessor}
-% ...
-
-% \subsection{Successor}
-% ...
+\subsection{Successor and Predecessor}
+The successor of a node $x$, given that the keys are distinct, the node with
+the smallest key greater than that of $x$. The predecessor is the symmetric
+case. Both run in $O(h)$.
 
 \subsection{Insertion}
 Inserting a node into a binary search tree is quite simple; we search through
@@ -52,6 +51,7 @@ everything else in this procedure is done in constant time $\Theta(1)$, and
 all we are really doing is searching through the tree then it follows from the
 search procedure that the running-time must be $O(h)$.
 
+\newpage
 \subsection{Deletion}
 The procedure of deleting a note $z$ from a tree $T$ has 3 basic cases:
 
@@ -118,6 +118,7 @@ constant time $\Theta(1)$.
 % unbalanced, as the result of an operation performed on it, we say that the
 % tree is \textit{left- or right heavy}.
 
+\newpage
 \section{Red-Black Binary Search Tree}
 A red-black BST is a implementation of balanced binary search trees, and it
 works by figuratively coloring each node in the tree one of two colors; red or
@@ -149,6 +150,7 @@ of $O(\lg n$. This follows from lemma 13.1\cite[p. 309]{clrs}, which states
 \noindent \textbf{Claim}
 A red-black tree with $n$ internal nodes has height at most $2\lg(n+1)$.
 
+\newpage
 \begin{lemma} {\ }\\
 	Let $s(x)$ denote the number of internal nodes in a subtree rooted at any
 	node $x$, then
