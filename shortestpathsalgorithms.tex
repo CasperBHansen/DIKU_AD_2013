@@ -32,7 +32,6 @@ A \textit{shortest path} $p$ from $v$ to $u$ is defined as $w(p) =
 \delta(u, v)$.
 
 \section{Properties}
-% NOTE: maybe proofs of lemmas is going a little over the top? Some are very long.
 We give the properties of shortest paths.
 
 \begin{description}
@@ -164,8 +163,13 @@ We will make use of a number of subprocedures in the following algorithms.
 \newpage
 \section{Bellman-Ford Algorithm}
 % p. 651, CLRS
-... \\
-\begin{algorithm}
+The algorithm produces a shortest path if no negative cycles are reachable
+from the source, indicating success by returning the boolean value
+\texttt{true}, otherwise it returns \texttt{false}. It works by continually
+relaxing edges, progressively decreasing the distance estimate on the weight
+of a shortest path from the source $s$ to each vertex $v \in V$.
+\\\\
+\begin{algorithm}[H]
 	\caption{Bellman-Ford algorithm}
 	\label{alg:bellman-ford}
 	
@@ -180,7 +184,7 @@ We will make use of a number of subprocedures in the following algorithms.
 	\SetKwFunction{Relax}{Relax}
 	
 	\Input{A graph $G$, a weight function $w$ and a source vertex $s$.}
-	\Output{...}
+	\Output{In-place shortest}
 	
 	\BlankLine
 	\BellmanFord($G$, $w$, $s$) \\
