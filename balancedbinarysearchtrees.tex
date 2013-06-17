@@ -53,13 +53,15 @@ all we are really doing is searching through the tree then it follows from the
 search procedure that the running-time must be $O(h)$.
 
 \subsection{Deletion}
-The procedure of deleting a note $Z$ from a tree $T$ has 3 basic cases:
+The procedure of deleting a note $z$ from a tree $T$ has 3 basic cases:
 
 \begin{enumerate}
-\item{If $Z$ has no children, we simply delete the node.}
-\item{If $Z$ has 1 chils we elevate this child to $Z$'s postion and remove $Z$.}
-\item{If $Z$ has 2 children, we find the sucessor $Y$, as $Z$'s right child. we put $Y$ in $Z$ place and make $Z$ left subtree the new left subtree of $Y$.
-$Y$'s subtree is then used as right subtree, and is constructed recursivly as stated in this case}
+\item{If $z$ has no children, we simply delete the node.}
+\item{If $z$ has 1 child we elevate this child to the postion of $z$.}
+\item{If $z$ has 2 children, we find the successor $y$, as $z$'s right child.
+We put $y$ in place of $z$ and make the left subtree of $z$ the new left
+subtree of $y$. The subtree of $y$ is then used as the right subtree, and is
+constructed recursively as stated in this case.}
 \end{enumerate}
 
 \subsection{Rotation}
