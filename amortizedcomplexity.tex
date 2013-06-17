@@ -29,8 +29,35 @@ cost applies to each operation, even when there are several types of
 operations in the sequence.
 
 \subsection{Example}
-...
+Consider a dynamic table, which doubles in size whenever it runs out of empty
+space. Let us examine a sequence of $n$ operations, on an initially empty
+table. While the table has empty spaces, we simply insert new items, each has
+a cost of 1. If the table has no more room, however, we perform an expansion,
+and we have to copy all of the previous elements along with the insertion,
+which gives us a cost of $c_i = i$.
 
+Performing $n$ operations thus gives us an upper-bound of $O(n^2)$, but
+because of the rare expansion, this bound is not tight. Specifically, this
+only happens when $i - 1$ is an exact power of 2.
+\begin{align}
+	c_i =
+	\begin{cases}
+		i & \mbox{if $i - 1$ is an exact power of two} \\
+		1 & \mbox{otherwise}
+	\end{cases}
+\end{align}
+We can tighten this bound using aggregate analysis.
+\begin{align}
+	\sum_{i=1}^{n}c_i
+	\leq n \sum_{j=0}^{\lfloor \lg n \rfloor} 2^j
+	< n + 2n
+	= 3n
+\end{align}
+Reasoned by the fact that at most $n$ operations cost 1, and the remaining
+form a geometric series. Since $n$ operations are bounded by $3n$, the
+amortized cost per operation is $3$.
+
+\newpage
 \section{Accounting Method}
 In the accounting method of amortized complexity analysis, we \textit{assign}
 a cost to each operation - this amortized cost does not necessarily reflect
