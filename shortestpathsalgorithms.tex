@@ -207,7 +207,10 @@ of a shortest path from the source $s$ to each vertex $v \in V$.
 \end{algorithm}
 
 \subsection{Analysis}
-...
+The initialization on line 3 takes $O(V)$-time. The loop on lines 4--8 is run
+exactly $|V|-1$ times, each pass relaxes every edge once $\Theta(E)$, giving
+us the most prominent contribution to the running-time $O(VE)$. The last loop
+contributes just $O(E)$.
 
 \newpage
 \section{Dijkstra's Algorithm}
