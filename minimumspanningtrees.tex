@@ -164,7 +164,11 @@ is a slowly growing function (see section 21.4\cite[p. 573]{clrs}).
 % p. 634
 This algorithm relies on a priority queue (see section
 \ref{ch:heaps|sub:priorityqueues} on page \pageref{ch:heaps|sub:priorityqueues}
-for more on this topic).
+for more on this topic). It works by building a min-heap priority queue of the
+vertices, and then continually extracting the minimum off of the heap. On each
+extraction, the algorithm goes through the adjacency list and updates the key
+and parent of the vertices still in the priority queue, which sets us up for
+the next iteration.
 \\\\
 \begin{algorithm}[H]
 	\caption{Prim's algorithm}
@@ -209,10 +213,16 @@ for more on this topic).
 		}
 	}
 \end{algorithm}
-If we relate it to algorithm \ref{alg:generic-mst} we see that for Prim's
-algorithm the exit condition of forming a spanning tree takes the form of
-emptying a priority queue.
 
-\newpage
 \subsection{Analysis}
-...
+Assuming the use of the algorithm described in
+\ref{ch:heaps|sub:priorityqueues}, then the initialization part on lines 3--8
+contributes $O(V)$ to the running-time.
+
+The loop on lines 9--17 are run exactly $|V|$ times. Since each
+\texttt{ExtractMin} costs $O(\lg V)$, this loop contributes $O(V \lg V)$. The
+loop on lines 11--16 runs exactly $|E|$ times. We maintain a priority queue
+membership bit, such that the check is constant time $\Theta(1)$. The key
+update is an implicit \texttt{DecreaseKey}, taking $O(\lg V)$, and thus we
+have $O(V \lg V + E \lg V) = O(E \lg V)$.
+
