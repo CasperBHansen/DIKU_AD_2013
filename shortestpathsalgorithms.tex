@@ -49,7 +49,9 @@ If there is no path from $s$ to $v$, then we always have $v.d = \delta(s, v) =
 \infty$.
 
 	\item \textbf{Convergence} \cite[p.~672-673, thm. 24.14]{clrs} \\
-...
+If $s \leadsto u \rightarrow v$ is a shortest path in $G$ for some
+$u, v \in V$, and if $u.d = \delta(s, u)$ at any time prior to relaxing edge
+$(u, v)$, then $v.d = \delta(s,v)$ at all times afterward.
 	\item \textbf{Path-relaxation} \cite[p.~673, thm. 24.15]{clrs} \\
 If $p = \langle v_0, v_1, \dots, v_k \rangle$ is a shortest path from
 $s = v_0$ to $v_k$, and we relax the edge of $p$ in order $(v_0, v_1),
@@ -184,7 +186,7 @@ of a shortest path from the source $s$ to each vertex $v \in V$.
 	\SetKwFunction{Relax}{Relax}
 	
 	\Input{A graph $G$, a weight function $w$ and a source vertex $s$.}
-	\Output{In-place shortest}
+	\Output{In-place shortest path of the graph $G$.}
 	
 	\BlankLine
 	\BellmanFord($G$, $w$, $s$) \\
@@ -215,7 +217,8 @@ checks for negative cycles reachable from the source, contributing just $O(E)$.
 \newpage
 \section{Dijkstra's Algorithm}
 % p. 658, CLRS
-The algorithm ...
+The algorithm works only on directed graphs with nonnegative edge-weights,
+that is we assume that $w(u, v) \geq 0$ for each edge $(u, v) \in E$.
 \\\\
 \begin{algorithm}[H]
 	\caption{Dijkstra's algorithm}
@@ -230,7 +233,7 @@ The algorithm ...
 	\SetKwFunction{Relax}{Relax}
 	
 	\Input{A graph $G$, a weight function $w$ and a source vertex $s$.}
-	\Output{...}
+	\Output{In-place shortest path of the graph $G$.}
 	
 	\BlankLine
 	\Dijkstra($G$, $w$, $s$) \\
@@ -252,5 +255,56 @@ The algorithm ...
 \end{algorithm}
 
 \subsection{Analysis}
+During initialization on lines 3--5, we spend $O(V)$ time on line 3,
+$\Theta(1)$ on line 4 and lastly $O(V)$ on line 5
+(see \ref{ch:heaps|sub:priorityqueues}, page
+\pageref{ch:heaps|sub:priorityqueues}). Amounting to a total of $O(V)$.
+
 ...
+
+\newpage
+\subsection{Proof}
+We state and prove the loop invariant. It suffices to show that this holds for
+each vertex at the time it gets added to $S$, we will rely on the upper-bound
+property to show that it holds at all times thereafter.
+\\\\
+\noindent \textbf{Invariant} \\
+that the maintains; At the start of each iteration of the while loop
+$v.d = \delta(s, v)$ for each vertex $v \in V$.
+\\\\
+\noindent \textbf{Initialization} \\
+Initially, $S = \emptyset$, and so the invariant is trivially true.
+\\\\
+\noindent \textbf{Maintenance} \\
+Suppose that we add a vertex $u$ to the set $S$, where $u.d \neq \delta(s, u)$
+for purposes of contraction. First, we must have that $u \neq s$, since $s$ is
+the first to be pulled out of the queue because $s.d = 0$. As a consequence of
+this $S \neq \empty$ at the time where $u$ is added, since $s$ has already
+been added. There must be a path from $s$ to $u$, otherwise $\delta(s, u) =
+\infty$ by the no-path property, which would violate the assumption. This
+means that there must be a shortest path from $s$ to $u$. Prior to adding $u$
+to $S$, path $p$ connects a vertex in $S$ (namely $s$) to a vertex in $V - S$
+(namely $u$). Consider the connecting vertices on such a path, $y \in S$ and
+the predecessor of $y$, $x \in V - S$. We have that
+\begin{align}
+	\underbrace{s \buildrel{p_1}\over\leadsto\; y}_{S}
+	\rightarrow
+	\underbrace{x \buildrel{p_2}\over\leadsto\; u}_{V - S} \nonumber
+\end{align}
+We claim that $y.d = \delta(s, y)$ when $u$ is added to $S$. To prove this, we
+observe that $x \in S$, hence $x.d = \delta(s, x)$ when $x$ was added. The
+edge $(x, y)$ was then relaxed and the claim then follows from the convergence
+property.
+
+Because $y$ appears before $u$, we have that $\delta(s, y) \leq \delta(s, u)$,
+and by the upper-bound property we have that $y.d = \delta(s, y) \leq
+\delta(s, u) \leq u.d$. However, since $y, u \in V - S$ at the time where $u$
+was chosen, we must have that $y.d = \delta(s, y) = \delta(s, u) = u.d$. The
+consequence of this is that $u$ is in fact $y$, by which it follows that
+$u.d = \delta(s, u)$, which is a contradiction to our initial statement.
+\\\\
+\noindent \textbf{Termination} \\
+As a direct consequence of the exit-condition, $Q = \emptyset$, which by the
+loop invariant that $Q = V - S$ implies that $S = V$. Thus, $u.d =
+\delta(s, u)$ for all vertices $u \in V$.
 
