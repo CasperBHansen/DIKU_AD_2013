@@ -95,7 +95,10 @@ minimum spanning tree of $G$.
 \newpage
 \section{Kruskal's Algorithm}
 % p. 631
-... \\
+The algorithm follows the greedy strategy by sorting the edges into
+nondecreasing order of their weights and then simply adding each edge to
+the forest if it does not already belong to it.
+\\\\
 \begin{algorithm}[H]
 	\caption{Kruskal's algorithm}
 	\label{alg:kruskal-mst}
@@ -109,7 +112,7 @@ minimum spanning tree of $G$.
 	\SetKwFunction{Union}{Union}
 	
 	\Input{A graph $G$ and a weight function $w$.}
-	\Output{...}
+	\Output{A minimum spanning tree.}
 	
 	\BlankLine
 	\KruskalMST($G$, $w$) \\
@@ -132,26 +135,22 @@ minimum spanning tree of $G$.
 				\Union($u$, $v$)
 			}
 		}
+		\Return $A$
 	}
-\end{algorithm}{\ }\\\\
-In the above algorithm, we have assumed access to a number of utility
-functions. These are explained below, and their complexity given.
+\end{algorithm}
 \begin{description}
-	\item \texttt{MakeSet} creates a new set whose only member (and thus
-representative) is $x$ --- takes $\Theta(1)$-time.
-	\item \texttt{FindSet} returns a pointer to the representative of the
-(unique) set containing $x$ --- takes $\Theta(1)$-time.
-	\item \texttt{Union} creates the union set of the two passed sets ---
-takes $\Theta(1)$-time.
+	\item \texttt{MakeSet} creates a set whose only member and representative is $x$ --- $\Theta(1)$.
+	\item \texttt{FindSet} returns the representative of the set containing $x$ --- $\Theta(1)$.
+	\item \texttt{Union} creates the union set --- $\Theta(1)$.
 \end{description}
 
-\newpage
+%\newpage
 \subsection{Analysis}
-The running-time of \ref{alg:kruskal-mst} depends on the implementation of
-the disjoint-set data structure. Assuming the use of the fastest
-implementation known (disjoint-set-forest, see section
-21.3\cite[p. 568]{clrs}), the running-time is as follows.
-
+%The running-time of \ref{alg:kruskal-mst} depends on the implementation of
+%the disjoint-set data structure. Assuming the use of the fastest
+%implementation known (disjoint-set-forest, see section
+%21.3\cite[p. 568]{clrs}), the running-time is as follows.
+%
 The initialization occurs on lines 3--7. Line 3 takes constant time
 $\Theta(1)$, lines 4--6 performs $|V|$ \texttt{MakeSet} operations. We can
 sort the edges $G.E$ in $O(E \lg E)$-time.
