@@ -216,10 +216,7 @@ These are the procedures that are supported by max- or min-heaps.
 
 \subsection{Extraction}
 \label{ch:heaps|sec:procedures|sub:extraction}
-When we want to extract an element out of a heap, because of its practical use
-we are typically interested only in the root node, which holds the maximum
-key. Getting the root node is a trivial problem, we simply return the element
-at index zero. \\
+We are typically only interested in the root node.\\\\
 \begin{algorithm}[H]
 	\caption{Extract max}
 	\label{alg:heap-extract-max}
@@ -247,12 +244,41 @@ at index zero. \\
 		\Return $max$
 	}
 \end{algorithm}
-Lines 2-8 take constant time $\Theta(1)$, and as such the running-time of an
-extraction operation is dictated by the call to \texttt{MaxHeapify}, which is
-$O(\lg n)$.
+Lines 2-8 take constant time $\Theta(1)$, the call to \texttt{MaxHeapify}
+takes $O(\lg n)$.
 
+\subsection{Insertion}
+Inserting a key into a heap is done using the following procedure. \\\\
+\label{ch:heaps|sec:procedures|sub:insertion}
+\begin{algorithm}[H]
+	\caption{Heap insertion}
+	\label{alg:heap-insert}
+
+	\SetKwInOut{Input}{Input}
+	\SetKwInOut{Output}{Output}
+
+	\SetKwFunction{Insert}{Insert}
+	\SetKwFunction{IncreaseKey}{IncreaseKey}
+
+	\Input{A heap $A$ and a key $k$.}
+	\Output{Inserts the key $k$ into the heap $A$.}
+
+	\BlankLine
+	\Insert($A$, $k$) \\
+	\Begin
+	{
+		$A.size = A.size + 1$ \\
+		$A[A.size] = -\infty$ \\
+		\IncreaseKey($A$, $A.size$, $k$)
+	}
+\end{algorithm}
+Lines 2-4 take constant time $\Theta(1)$, and thusly inherits its complexity
+from the call to \texttt{IncreaseKey}, which is $O(\lg n)$.
+
+\clearpage
 \subsection{Increase key}
-Increasing the priority of an entry is done using the following procedure. \\
+Increasing the priority of an entry is done using the following procedure.
+\\\\
 \label{ch:heaps|sec:procedures|sub:increase-key}
 \begin{algorithm}[H]
 	\caption{Increase key}
@@ -283,45 +309,11 @@ Increasing the priority of an entry is done using the following procedure. \\
 		}
 	}
 \end{algorithm}
-Lines 2-6 take constant time $\Theta(1)$. Like \texttt{MaxHeapify} the
-\texttt{while}-loop traces from the node, which in the worst case is a leaf,
-to the root, which gives us a worst-case of $O(\lg n)$.
+Lines 2-6 take constant time $\Theta(1)$. The \texttt{while}-loop traces from
+the node, in the worst case a leaf, to the root. The worst-case is then $O(\lg n)$.
 
-\subsection{Insertion}
-Inserting a key into a heap is done using the following procedure. \\
-\label{ch:heaps|sec:procedures|sub:insertion}
-\begin{algorithm}[H]
-	\caption{Heap insertion}
-	\label{alg:heap-insert}
-
-	\SetKwInOut{Input}{Input}
-	\SetKwInOut{Output}{Output}
-
-	\SetKwFunction{Insert}{Insert}
-	\SetKwFunction{IncreaseKey}{IncreaseKey}
-
-	\Input{A heap $A$ and a key $k$.}
-	\Output{Inserts the key $k$ into the heap $A$.}
-
-	\BlankLine
-	\Insert($A$, $k$) \\
-	\Begin
-	{
-		$A.size = A.size + 1$ \\
-		$A[A.size] = -\infty$ \\
-		\IncreaseKey($A$, $A.size$, $k$)
-	}
-\end{algorithm}
-Lines 2-4 take constant time $\Theta(1)$, and thusly inherits its complexity
-from the call to \texttt{IncreaseKey}, which is $O(\lg n)$.
-
-\newpage
 \section{Sorting}
-Given that the procedure for extraction, as defined in section
-\ref{ch:heaps|sec:procedures|sub:extraction}, one can easily imagine that
-building a max- or min-heap and emptying the priority queue by repeatedly
-calling the extraction procedure on it produces a sorted array.
-
+Repeatedly extracting the max- or minimum, produces a sorted array.\\\\
 \begin{algorithm}[H]
 	\caption{Heapsort}
 	\label{alg:heapsort}
@@ -353,6 +345,6 @@ calling the extraction procedure on it produces a sorted array.
 \end{algorithm}
 
 The initializing call to \texttt{BuildMaxHeap} takes $O(n)$ time, and each
-$n-1$ calls to \texttt{MaxHeapify} takes $O(\lg n)$ time. Thus the running-
-time of heap sort is $O(n \lg n)$.
+$n-1$ calls to \texttt{MaxHeapify} takes $O(\lg n)$ time. Thus we have
+$O(n \lg n)$.
 
