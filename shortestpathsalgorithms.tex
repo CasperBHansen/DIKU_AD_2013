@@ -255,12 +255,15 @@ that is we assume that $w(u, v) \geq 0$ for each edge $(u, v) \in E$.
 \end{algorithm}
 
 \subsection{Analysis}
-During initialization on lines 3--5, we spend $O(V)$ time on line 3,
-$\Theta(1)$ on line 4 and lastly $O(V)$ on line 5
-(see \ref{ch:heaps|sub:priorityqueues}, page
-\pageref{ch:heaps|sub:priorityqueues}). Amounting to a total of $O(V)$.
-
-...
+% During initialization on lines 3--5, we spend $O(V)$ time on line 3,
+% $\Theta(1)$ on line 4 and lastly $O(V)$ on line 5
+% (see \ref{ch:heaps|sub:priorityqueues}, page
+% \pageref{ch:heaps|sub:priorityqueues}). Amounting to a total of $O(V)$.
+%
+% The outer loop on lines 6--12 runs exactly $|V|$ times, it carries with it an
+% \texttt{ExtractMin} of $O(\lg V)$, which gives us $O(V \lg V)$. The inner loop
+% runs a total of $|E|$ times, carrying with it an implicit \texttt{DecreaseKey}
+% of $O(\lg V)$, which gives us $O(E \lg V)$.
 
 \newpage
 \subsection{Proof}
