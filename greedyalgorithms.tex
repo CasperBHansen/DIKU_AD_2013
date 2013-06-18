@@ -101,11 +101,102 @@ running-time of the initialization at $O(n)$ (see algorithm
 The loop in lines 5--11 runs exactly $n-1$ times, executing heap operations
 that take $O(\lg n)$ each, and so it contributes a total of $O(n \lg n)$.
 
-% \subsection{Proof}
-% We must first show that the problem exhibits optimal substructure, and that
-% the greedy choice is always right. First we show that the greedy choice holds.
+\newpage
+\subsection{Proof}
+The proof is two-part, since we must prove that the greedy choice holds, and
+demonstrate the optimal subtructure.
 
-% \begin{lemma}
-	
-% \end{lemma}
+\subsubsection{Proving the Greedy Choice}
+First, we prove that the greedy choice holds.
+
+\begin{lemma} \cite[16.2, p. 433]{clrs} \\
+\label{lemma:16.2}
+\textnormal
+{
+	Let $C$ be an alphabet in which each character $c \in C$ has frequency
+	$c.freq$. Let $x$ and $y$ be two characters in the set having the lowest
+	frequencies. Then there exists an optimal prefix code for $C$ in which the
+	codewords for $x$ and $y$ have the same length and differ only in the last
+	bit.
+}
+\end{lemma}
+
+\begin{proof}
+	Let $a$ and $b$ be two characters that are siblings of maximum depth in a
+	tree $T$. We assume that $a.freq \leq b.freq$ and $x.freq \leq y.freq$.
+	Since $x$ and $y$ have the two lowest leaf frequencies, in order, and $a$
+	and $b$ have arbitrary frequencies, in order, we have that $x.freq \leq
+	a.freq$ and $y.freq \leq b.freq$. We will assume that $x.freq \neq
+	b.freq$, since that would make $a.freq = b.freq = x.freq = y.freq$, and
+	the lemma would be trivially true. We exchange the positions of $a$ and
+	$x$, and $b$ and $y$, such that $x$ and $y$ are now siblings of maximum
+	depth.
+
+	The difference in cost between the original tree $T$ and the intermediate
+	tree $T'$, where $x$ and $a$ swapped places is then
+	\begin{align}
+		B(T) - B(T') &= \sum_{c \in C} c.freq \cdot d_T(c)
+		- \sum_{c \in C} c.freq \cdot d_{T'}(c) \\
+		&= x.freq \cdot d_T(x) + a.freq \cdot d_T(a) \\
+		&{\ \ \ }- x.freq \cdot d_{T'}(x) - a.freq \cdot d_{T'}(a) \\
+		&= x.freq \cdot d_T(x) + a.freq \cdot d_T(a) \\
+		&{\ \ \ }- x.freq \cdot d_{T}(a) - a.freq \cdot d_{T}(x) \\
+		&= (a.freq - x.freq)(d_T(a) - d_T(x)) \\
+		&\geq 0 
+	\end{align}
+	Since $x$ is a minimum-frequency leaf, then $a.freq - x-freq$ is
+	nonnegative. Similarly, since $a$ is at maximum depth of $T$, then $d_T(a)
+	- d_T(x)$ is also nonnegative. This is the same of the tree exchanges of
+	$y$ and $b$ has swapped places. Thereby, $B(T'') \leq B(T') \leq B(T)$,
+	and since $T$ is optimal this implies that $B(T'') = B(T)$, thus $T''$ is
+	also an optimal tree, in which $x$ and $y$ appear as sibling leaves of
+	maximum depth, from which the lemma follows.
+\end{proof}
+This implies that the greedy choice holds by the merging procedure.
+
+\subsubsection{Optimal Substructure}
+Next we prove that the problem exhibits the optimal substructure property.
+\begin{lemma} \cite[16.3, p. 435]{clrs}
+\textnormal
+{
+	Let $C$ be a given alphabet with frequency $c.freq$ defined for each
+	character $c \in C$. Let $x, y \in C$ be characters with minimum frequency.
+	Let $C' = C - \{x, y\} \cup \{z\}$. Define $f$ for $C'$ as for $C$, except
+	that $z.freq = x.freq + y.freq$. Let $T'$ be any tree representing an
+	optimal prefix code for $C'$. Then $T$, obtained from $T'$ by replacing
+	the leaf node for $z$ with an internal node having $x$ and $y$ as children,
+	represents an optimal prefix code for $C$.
+}
+\end{lemma}
+
+\begin{proof}
+	We want to express the cost of $B(T)$ in terms of $B(T')$. For each $c \in
+	C - \{x, y\}$, we have that $d_T(c) = d_{T'}(c)$, and hence $c.freq \cdot
+	d_T(c) = c.freq \cdot d_{T'}(c)$. Since $d_T(x) = d_T(y) = d_{T'}(z) + 1$,
+	we have
+	\begin{align}
+		x.freq \cdot d_T(x) + y.freq \cdot d_T(y)
+		&= (x.freq + y.freq)(d_{T'}(z) + 1) \\
+		&= z.freq \cdot d_{T'}(z) + (x.freq + y.freq)
+	\end{align}
+	From this, we express the cost of $B(T)$ in terms of $B(T')$ by
+	\begin{align}
+		B(T) = B(T') + x.freq + y.freq
+		\quad \text{ or } \quad
+		B(T') = B(T) - x.freq - y.freq
+	\end{align}
+	Now, suppose that $T$ does not represent an optimal prefix code for $C$.
+	Then there exists an optimal tree $T''$ such that $B(T'') < B(T)$. By
+	lemma \ref{lemma:16.2} $T'''$ has $x$ and $y$ as siblings. Let $T''$ be
+	the tree $T''$ with the common parent of $x$ and $y$ replaced by leaf $z$
+	with frequency $z.freq = x.freq + y.freq$. Then
+	\begin{align}
+		B(T''') &= B(T'') - x.freq - y.freq \\
+		&< B(T) - x.freq - y.freq \\
+		&= B(T')
+	\end{align}
+	which is a contradiction to the assumption that $T'$ represents an optimal
+	prefix code for $C'$. Thus, $T$ must represent an optimal prefix code for
+	the alphabet $C$.
+\end{proof}
 
