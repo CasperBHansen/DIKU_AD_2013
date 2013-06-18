@@ -129,7 +129,8 @@ table entry $c[i,j]$. This gives us a way to express the recursion.
 
 \newpage
 \subsection{Bottom-up solution}
-...
+The algorithm computes a table that represents all possible solutions, and
+by tracing backward we can print the longest common subsequence.
 \\\\
 \begin{algorithm}[H]
 	\caption{Longest common subsequence, bottom-up.}
@@ -183,4 +184,8 @@ table entry $c[i,j]$. This gives us a way to express the recursion.
 		\Return $b$ and $c$
 	}
 \end{algorithm}
+
+\subsection{Analysis}
+Each table entry takes $\Theta(1)$ to compute, and we do so exactly once, as
+follows from the nested loop on lines 12--25. The running-time is $\Theta(mn)$.
 
