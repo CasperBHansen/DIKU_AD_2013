@@ -255,15 +255,23 @@ that is we assume that $w(u, v) \geq 0$ for each edge $(u, v) \in E$.
 \end{algorithm}
 
 \subsection{Analysis}
-% During initialization on lines 3--5, we spend $O(V)$ time on line 3,
-% $\Theta(1)$ on line 4 and lastly $O(V)$ on line 5
-% (see \ref{ch:heaps|sub:priorityqueues}, page
-% \pageref{ch:heaps|sub:priorityqueues}). Amounting to a total of $O(V)$.
-%
-% The outer loop on lines 6--12 runs exactly $|V|$ times, it carries with it an
-% \texttt{ExtractMin} of $O(\lg V)$, which gives us $O(V \lg V)$. The inner loop
-% runs a total of $|E|$ times, carrying with it an implicit \texttt{DecreaseKey}
-% of $O(\lg V)$, which gives us $O(E \lg V)$.
+In the case of Dijkstra's algorithm we reason that the use of an array for the
+priority queue is better suited for the problem. Thereby operations cost
+\begin{description}
+	\item \texttt{ExtractMin} takes $\Theta(n)$.
+	\item \texttt{Insert} and \texttt{DecreaseKey} takes $\Theta(1)$.
+\end{description}
+In the outer loop, we perform $|V|$ extractions, each of which costs $O(V)$,
+giving us $O(V^2)$. In the inner loop we consider each vertex in the adjacency
+list exactly once, which by aggregate analysis gives us exactly $|E|$ implicit
+calls to \texttt{DecreaseKey}, each taking $O(1)$. This amounts to a total of
+$O(V^2 + E) = O(V^2)$.
+
+If the graph if sufficiently sparse, particularly when
+$E = o(\frac{V^2}{\lg V})$, we may use a min-heap priority queue instead. We
+then have $|V|$ extractions of $O(\lg V)$, and $|E|$ decrease key operations,
+which yields a running-time of $O((V+E)\lg V)$, which is $O(E \lg V)$ if all
+vertices are reachable from the source.
 
 \newpage
 \subsection{Proof}
