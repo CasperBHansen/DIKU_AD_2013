@@ -38,11 +38,42 @@ minimum weight (see theorem 23.1\cite[p. 626]{clrs}).
 \end{description}
 
 \section{Optimal Substructure}
-...
+The proof of optimal substructure for minimum spanning trees is given by
+\begin{theorem} \cite[23.1, p. 626]{clrs} \\
+\label{thm:23.1}
+\textnormal
+{
+	Let $G = (V, E)$ be a connected undirected graph with a real-valued weight
+	function $w$ defined on $E$. Let $A \subset E$ that is included in some
+	minimum spanning tree for $G$, let $(S, V - S)$ be any cut of $G$ that
+	respects $A$, and let $(u, v)$ be a light edge crossing the cut. Then, the
+	edge $(u, v)$ is safe for $A$.
+}
+\end{theorem}
+
+\begin{proof}
+	Let $T$ be a MST that includes $A$, and assume that $T$ does not contain
+	the light edge $(u, v)$ --- if it does, we are done. We construct another
+	MST $T'$ that includes $A \cup \{(u, v)\}$. The edge $(u, v)$ forms a
+	cycle with a path $p$ from $u$ to $v$ in $T$. Since $u \in S$ and
+	$v \in V - S$, at least one edge in $T$ lies on the path $p$ and also
+	crosses the cut. Let $(x, y)$ be any such edge that is not in $A$, since
+	the cut respects $A$. Since $(x, y)$ is on the unique simple path from $u$
+	to $v$ in $T$, removing $(x, y)$ breaks $T$ into two subtrees. Adding
+	$(u, v)$ reconnects them to form a new spanning tree $T' = T - \{(x, y)\}
+	\cup \{(u, v)\}$. And since both edges crosses the cut, but $(u, v)$ is a
+	light edge $w(u, v) \leq (x, y)$.
+	\begin{align}
+		w(T') = w(T) - w(x, y) + w(u, v) \leq w(T)
+	\end{align}
+	But $T$ is a MST, that is $w(T) \leq w(T')$, then so must $T'$ be.
+\end{proof}
 
 \section{Overlapping Subproblems}
-...
-% TODO: prove that removing an edge (u, v) yields two separate trees.
+The overlapping subproblems property follows directly from theorem
+\ref{thm:23.1}, that states if we remove any edge from a minimum spanning
+tree, we are left with subtrees $T_1$ and $T_2$, each a subset of a
+minimum spanning tree $T$.
 
 \newpage
 \section{Generic Minimum Spanning Tree}
