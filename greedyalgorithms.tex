@@ -27,36 +27,16 @@ problems.
 
 \newpage
 \section{The Greedy Strategy}
-Here we list the procedure one must follow in order to design a greedy
-algorithm. Each point will be discussed in depth under its own section.
+These are the guidelines for designing greedy algorithms.
 \begin{enumerate}
 	\item \textbf{Describe} the optimization problem as one in which making a
 choice, we are left with one subproblem.
 	\item \textbf{Prove} that the greedy choice always yields a globally
 optimal solution.
-	\item \textbf{Demonstrate} optimal substructure by showing that, having
-made a greedy choice, what remains is a subproblem with the property that if
-we combine an optimal solution with the greedy greedy choice, we arrive at an
-optimal solution to the original problem.
+	\item \textbf{Demonstrate} optimal substructure by showing that the greedy
+choice, combined with solutions to subproblems we get an optimal solution.
 \end{enumerate}
 
-\subsection{Describing the Optimization Problem}
-% p. ?-?, CLRS
-...
-
-\subsection{Proving The Greedy Choice}
-% p. 424, CLRS
-As the greedy choice is not always the optimal choice, you will have to prove
-the choice for each algorithme. The proof examines a globally optimal solution
-to some subproblem. It then shows how to modify the solution to substitute the
-greedy choice for some other choice, resulting in one similar, but smaller,
-subproblem.
-
-\subsection{Demonstrating Optimal Substructure}
-% p. ?-?, CLRS
-...
-
-\clearpage
 \section{Huffman Codes}
 % p. 428-435, CLRS
 The Huffman code algorithm compresses data by constructing a tree-structure
