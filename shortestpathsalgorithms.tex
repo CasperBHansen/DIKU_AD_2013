@@ -63,6 +63,7 @@ Once $v.d = \delta(s, v)$ for all $v \in V$, the predecessor subgraph is a
 shortest-paths tree rooted at $s$.
 \end{description}
 
+\newpage
 \section{Optimal Substructure}
 Shortest paths algorithms typically rely on the property that a shortest path
 between two vertices contains other shortest paths within it. This is one of
@@ -71,15 +72,28 @@ the key indicators of \textit{dynamic programming} (see chapter
 \ref{ch:greedyalgorithms}) problems.
 
 \begin{lemma}
+\label{lemma:24.1}
 	\textbf{Subpaths of shortest paths are shortest paths} \\
-	...
+	Given a weighted digraph $G = (V, E)$ with weight function $w \rightarrow
+	\mathbb{R}$, let $p = \langle v_0, v_1, \dots, v_k \rangle$ be a shortest
+	path from $v_0$ to $v_k$ and, for any $i$ and $j$ such that $0 \leq i \leq
+	j \leq k$, let $p_{ij} = \langle v_i, v_{i+1}, \dots, v_{j-1}, v_j
+	\rangle$ be a subpath of $p$ from vertex $v_i$ to $v_j$. Then $p_{ij}$ is
+	a shortest path from $v_i$ to $v_j$.
 \end{lemma} 
 
 \begin{proof} \textnormal{\cite[p.~645, thm.~24.1]{clrs}} \\
-	...
+	If we decompose path $p$ into $v_0 \buildrel{p_{0i}}\over\leadsto\; v_i
+	\buildrel{p_{ij}}\over\leadsto\; v_j \buildrel{p_{jk}}\over\leadsto\; v_k$,
+	then we have that $w(p) = w(p_{0i}) + w(p_{ik}) + w(p_{jk})$. Now assume
+	that there is a path $p'_{ij}$ from $v_i$ to $v_j$ with $w(p'_{ij}) <
+	w(p_{ij})$. Then $v_0 \buildrel{p_{0i}}\over\leadsto\; v_i
+	\buildrel{p'_{ij}}\over\leadsto\; v_j
+	\buildrel{p_{jk}}\over\leadsto\; v_k$ is a path from $v_0$ to $v_k$ whose
+	weight is less than $w(p)$, which contradicts the assumption that $p$ is
+	a shortest path from $v_0$ to $v_k$.
 \end{proof}
 
-\newpage
 \section{Single-source Shortest Path}
 % ch. 24, CLRS
 Given a graph $G = (V, E)$, we want to find a shortest path from a given
