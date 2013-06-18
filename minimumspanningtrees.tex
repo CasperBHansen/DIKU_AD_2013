@@ -226,3 +226,28 @@ membership bit, such that the check is constant time $\Theta(1)$. The key
 update is an implicit \texttt{DecreaseKey}, taking $O(\lg V)$, and thus we
 have $O(V \lg V + E \lg V) = O(E \lg V)$.
 
+\subsection{Proof}
+By the generic minimum spanning tree algorithm \ref{alg:generic-mst}, Prim's
+algorithm build on its principles, and as such implicitly maintains the set
+$A$ from the generic algorithm as
+\begin{align}
+	A = \{ (v, v.\pi) : v \in V - \{r\} - Q \}
+\end{align}
+When the algorithm terminates, the priority queue has been exhausted and the
+minimum spanning tree $A$ for $G$ is thus
+\begin{align}
+	A = \{ (v, v.\pi) : v \in V - \{r\} \}
+\end{align}
+The algorithm maintains a three-part loop invariant:
+\begin{enumerate}
+	\item $A = \{ (v, v.\pi) : v \in V - \{r\} - Q \}$.
+	\item The vertices already placed into the MST are those in $V - Q$.
+	\item For all vertices $v \in Q$, if $v.\pi \neq $ \texttt{nil}, then
+$v.key < \infty$ and $v.key$ is the weight of a light edge $(v, v.\pi)$
+connecting $v$ to some vertex already in the MST.
+\end{enumerate}
+Line 10 identifies a vertex $u \in Q$ incident on a light edge that crosses
+the cut $(V - Q, Q)$ --- except the first, due to line 7. Removing $u$ from
+$Q$ adds it to the set $V - Q$, thus $(u, u.\pi)$ becomes a member of $A$.
+The inner loop maintains the third invariant by updating the $key$ and $\pi$
+attributes of every vertex adjacent to $u$ that is not in the tree.
