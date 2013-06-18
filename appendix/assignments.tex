@@ -18,29 +18,33 @@ invariants} (see appendix \ref{appendix:proofs|sec:loop-invariant}).
 \label{appendix:assignments|ass:hoare-partition}
 This assignment focused on:
 \begin{enumerate}
-\item Showing how \textit{hoare-partition} runs on a dataset.
-\item Proving various parts of the algorithm.
-\item Modifying the \textit{quicksort} algorithm to use \textit{hoare-partition} 
-instead of the regular \textit{partition}.
+	\item Showing how \textit{hoare-partition} runs on a dataset.
+	\item Proving various parts of the algorithm.
+	\item Modifying the \textit{quicksort} algorithm to use
+\textit{hoare-partition}  instead of the regular \textit{partition}.
 \end{enumerate}
+The takeaway points were, like the first assignment, mainly to exercise proofs
+of algorithms and ensure an understanding of quick sort works.
 
-\section{15-2 Longest Palindrome Subsequence}
+\newpage
+\section{15-2 Longest Palindromic Subsequence}
 \label{appendix:assignments|ass:longest-palindromic-subsequence}
-In this assignment the main problem was to construct an algorithm to find the 
-longest palindrome subsequence 
-(see dynamic programming \ref{ch:dynamicprogramming}) of a single string, and 
-then prove the running time of the algorithm.\\
-One solution to this was to use the \textit{LCS} algorithm on the input string 
-and its reverse, then splitting that in two and mirroring it, taking into account 
-an uneven amount of characters.\\
-The runtime of this is heavily based on the runtime of \textit{LCS-LENGTH} and 
-\textit{PRINT-LCS}, as our parts of the solution outside those two algorithms run 
-in linear time.
+Using dynamic programming (see chapter \ref{ch:dynamicprogramming}) we were to
+construct the longest palindromic subsequence (LPS). This assignment emphasized
+the validity of our proofs, as many fell into the trap of think an LCS
+procedure on the original string and the reverse of it would always produce a
+LPS --- which is the right train of thought, but can produce non-LPS results.
 
 \section{16-1 Coin Change}
 \label{appendix:assignments|ass:coin-change}
-\ref{ch:greedyalgorithms}
+The takeaway points here were to reenforce a good understanding of greedy
+algorithms (see chapter \ref{ch:greedyalgorithms}), and to exercise proving
+optimal substructure as well as overlapping subproblems.
 
 \section{13-3 AVL-tree}
 \label{appendix:assignments|ass:avl-tree}
-...
+The emphasis of this assignment was on our understanding of binary search
+trees in general, and how rebalancing can give us a great deal of performance
+in return. Although AVL trees aren't in the syllabus, they can be related to
+red-black binary search trees.
+
