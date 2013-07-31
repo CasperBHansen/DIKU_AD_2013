@@ -5,33 +5,13 @@
  *
  */
 
+
+#include <cstdlib>
 #include <iostream>
 using std::cout;
 using std::endl;
 
-#include <cstdlib>
-
-#pragma mark UTILITY FUNCTIONS
-
-template <class T>
-void swap(T * A, int i, int j) {
-	T tmp = A[i];
-	A[i] = A[j];
-	A[j] = tmp;
-}
-
-template <class T>
-void print_array(T * A, int n) {
-	
-	cout << "[";
-	for (int i = 0; i < n; ++i) {
-		cout << A[i];
-		if (i != n-1)
-			cout << ", ";
-		else
-			cout << "]" << endl;
-	}
-}
+#include "../utilities.h"
 
 
 #pragma mark PARTITIONING FUNCTIONS
@@ -43,9 +23,9 @@ int partition(T * A, int p, int r) {
 	int i = p - 1;
 	for (int j = p; j < r; ++j)
 		if (A[j] <= x)
-			swap<T>(A, ++i, j);
+			manipulate::swap<T>(A, ++i, j);
 	i++;
-	swap<T>(A, i, r);
+	manipulate::swap<T>(A, i, r);
 	return i;
 }
 
@@ -76,12 +56,12 @@ int main(int argc, char * argv[]) {
 		A[i] = rand() % n;
 	
 	cout << "Unsorted: ";
-	print_array(A, n);
+	debug::print_array(A, n);
 	
 	quicksort(A, 0, n-1);
 	
 	cout << "Sorted: ";
-	print_array(A, n);
+	debug::print_array(A, n);
 	
 	return 0;
 }
